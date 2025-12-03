@@ -17,7 +17,7 @@ $users = $result->isSucceed() ? $result->data : [];
 
 <head>
     <title>ユーザーリスト <?= Config::getAppSetting('APP_TITLE') ?></title>
-    <?php require(__DIR__ . '/../compornents/flat/head.php'); ?>
+    <?php require(__DIR__ . '/../components/flat/head.php'); ?>
     <style>
         .wrapper {
             display: flex;
@@ -62,7 +62,7 @@ $users = $result->isSucceed() ? $result->data : [];
     </header>
 
     <div class="wrapper">
-        <?php require(__DIR__ . '/../compornents/sidebar.php'); ?>
+        <?php require(__DIR__ . '/../components/sidebar.php'); ?>
 
         <main class="main-content">
             <h1>ユーザーリスト</h1>

@@ -3,7 +3,7 @@
 
 <head>
     <title>404</title>
-    <?php require(__DIR__ . '/../compornents/flat/head.php'); ?>
+    <?php require(__DIR__ . '/../components/flat/head.php'); ?>
 </head>
 
 <body data-page-name='404'>

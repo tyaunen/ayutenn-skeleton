@@ -42,7 +42,7 @@ use ayutenn\core\session\AlertsSession;
 <html lang="ja" data-bs-theme="dark">
 <head>
     <title><?= Config::getAppSetting('APP_TITLE') ?></title>
-    <?php require(__DIR__ . '/../compornents/flat/head.php'); ?>
+    <?php require(__DIR__ . '/../components/flat/head.php'); ?>
 </head>
 
 <body>
@@ -188,14 +188,14 @@ $user_name = $remain_params['user-name'] ?? '';
 
 ## コンポーネントの利用
 
-共通部品は `/app/views/compornents/` に配置し、`require` で読み込みます:
+共通部品は `/app/views/components/` に配置し、`require` で読み込みます:
 
 ```php
 <!-- ヘッダー部分の共通読み込み -->
-<?php require(__DIR__ . '/../compornents/flat/head.php'); ?>
+<?php require(__DIR__ . '/../components/flat/head.php'); ?>
 
 <!-- サイドバーの読み込み -->
-<?php require(__DIR__ . '/../compornents/sidebar.php'); ?>
+<?php require(__DIR__ . '/../components/sidebar.php'); ?>
 ```
 
 ## セキュリティ

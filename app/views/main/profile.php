@@ -45,7 +45,7 @@ foreach ($session_messages as $msg) {
 
 <head>
     <title>プロフィール <?= Config::getAppSetting('APP_TITLE') ?></title>
-    <?php require(__DIR__ . '/../compornents/flat/head.php'); ?>
+    <?php require(__DIR__ . '/../components/flat/head.php'); ?>
     <style>
         .wrapper {
             display: flex;
@@ -142,7 +142,7 @@ foreach ($session_messages as $msg) {
     </header>
 
     <div class="wrapper">
-        <?php require(__DIR__ . '/../compornents/sidebar.php'); ?>
+        <?php require(__DIR__ . '/../components/sidebar.php'); ?>
 
         <main class="main-content">
             <div class="profile-container">
