@@ -25,7 +25,7 @@ use ayutenn\core\config\Config;
     </main>
     <script>
         function test() {
-            // axiosを使って、apiを叩く
+            // axiosを使って、apiを叩くサンプル
             axios.get(
                 './api/get/number', {}
             )

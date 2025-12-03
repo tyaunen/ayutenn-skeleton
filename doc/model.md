@@ -1,6 +1,17 @@
 # Model (バリデーションルール定義)
 このファイルに、モデルファイル(バリデーションルール定義)の作り方を記述します。
 
+## 実装参照
+
+このドキュメントで説明する機能は、以下のファイルで実装されています:
+
+- **コア実装**: `/vendor/tyaunen/ayutenn-core/src/requests/Model.php`
+- **バリデータ**: `/vendor/tyaunen/ayutenn-core/src/requests/RequestValidator.php`
+- **テスト**: `/vendor/tyaunen/ayutenn-core/tests/requests/ModelTest.php`
+- **実装例**: `/vendor/tyaunen/ayutenn-core/tests/requests/test_data/phpunit_RequestValidatorTest_user_name.json`
+
+実装の詳細を確認したい場合は、これらのファイルを参照してください。
+
 ## モデルファイルとは
 モデルファイルは、リクエストパラメータの型や許容範囲を定義するJSON形式のファイルです。
 ControllerやAPIで使用され、自動的にバリデーションと型変換を行います。

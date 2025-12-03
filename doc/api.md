@@ -1,6 +1,16 @@
 # API
 このファイルに、APIファイルの作り方を記述します。
 
+## 実装参照
+
+このドキュメントで説明する機能は、以下のファイルで実装されています:
+
+- **コア実装**: `/vendor/tyaunen/ayutenn-core/src/requests/Api.php`
+- **バリデータ**: `/vendor/tyaunen/ayutenn-core/src/requests/RequestValidator.php`
+- **実装例**: `/app/api/GetRandomNumberApi.php`
+
+実装の詳細を確認したい場合は、これらのファイルを参照してください。
+
 ## 命名規則
 APIファイルは、Apiで終わる名前のクラスファイルである必要があります。
 例えば、GetUserApi.phpのような形です。
@@ -45,7 +55,7 @@ return new GetRandomNumberApi();
 {
     "status": 0,
     "payload": [
-        "number" => 14
+        "number": 14
     ]
 }
 ```
@@ -110,7 +120,7 @@ return new GetRandomNumberApi();
 {
     "status": 0,
     "payload": [
-        "result" => 8
+        "result": 8
     ]
 }
 ```
@@ -145,7 +155,7 @@ class AddApi extends Api
     protected array $RequestParameterFormat = [
         'number1' => ['name' => '数値1', 'format' => 'easy_calc_number'],
         'number2' => ['name' => '数値2', 'format' => 'easy_calc_number'],
-        'number2' => ['name' => '数値2', 'format' => 'easy_calc_number', 'require' => false], // この項目は任意
+        'number3' => ['name' => '数値3', 'format' => 'easy_calc_number', 'require' => false], // この項目は任意
     ];
 
     // 任意項目は、is not setだった場合のみバリデートをスキップします。

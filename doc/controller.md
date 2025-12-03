@@ -1,6 +1,16 @@
 # Controller
 このファイルに、Controllerファイルの作り方を記述します。
 
+## 実装参照
+
+このドキュメントで説明する機能は、以下のファイルで実装されています:
+
+- **コア実装**: `/vendor/tyaunen/ayutenn-core/src/requests/Controller.php`
+- **バリデータ**: `/vendor/tyaunen/ayutenn-core/src/requests/RequestValidator.php`
+- **実装例**: `/app/controller/session/Login.php`
+
+実装の詳細を確認したい場合は、これらのファイルを参照してください。
+
 ## 命名規則
 Controllerファイルは、クラス名がファイル名と一致する必要があります。
 例えば、Login.phpのようなクラスファイルです。

@@ -1,6 +1,17 @@
 # Database (データベース操作)
 このファイルに、データベース操作を行うDataManagerクラスの作り方を記述します。
 
+## 実装参照
+
+このドキュメントで説明する機能は、以下のファイルで実装されています:
+
+- **コア実装**: `/vendor/tyaunen/ayutenn-core/src/database/DataManager.php`
+- **接続管理**: `/vendor/tyaunen/ayutenn-core/src/database/DbConnector.php`
+- **結果クラス**: `/vendor/tyaunen/ayutenn-core/src/database/QueryResult.php`
+- **実装例**: `/app/database/UserManager.php`
+
+実装の詳細を確認したい場合は、これらのファイルを参照してください。
+
 ## DataManagerとは
 DataManagerは、データベースへのアクセスを管理する抽象クラスです。
 このクラスを継承したマネージャークラスを作成し、テーブルごとの操作をメソッドとして実装します。
