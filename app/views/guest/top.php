@@ -53,6 +53,10 @@ foreach ($session_messages as $msg) {
                 <div class="content-block">
                     <h1>ayutenn setup ok</h1>
 
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="./assets/img/common/icon.png" alt="Ayutenn Icon" style="max-width: 200px; height: auto;">
+                    </div>
+
                     <?php if (!empty($alert_messages)): ?>
                         <?php foreach ($alert_messages as $message): ?>
                             <div class="alert alert-danger">

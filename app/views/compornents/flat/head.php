@@ -2,11 +2,11 @@
 use ayutenn\core\config\Config;
 
 $resource_dir = URL_ROOT;
-$view_path = $_SERVER['DOCUMENT_ROOT'] . Config::getAppSetting('APP_DIR') . "/public";
-$path_head_length = strlen($view_path);
+$asset_path = $_SERVER['DOCUMENT_ROOT'] . Config::getAppSetting('APP_DIR') . "/public/assets";
+$path_head_length = strlen($asset_path);
 
 $iterator = new RecursiveIteratorIterator(
-    new RecursiveDirectoryIterator($view_path)
+    new RecursiveDirectoryIterator($asset_path)
 );
 
 // css・js一括読み込み
@@ -15,11 +15,11 @@ $js_script_tag = '';
 foreach ($iterator as $file) {
     if ($file->isFile() && $file->getExtension() === 'css') {
         $css_file_path = substr($file->getPathname(), $path_head_length);
-        $css_link_tag .= "<link href='./app/public{$css_file_path}' rel='stylesheet'>\r\n";
+        $css_link_tag .= "<link href='./assets/{$css_file_path}' rel='stylesheet'>\r\n";
     }
     if ($file->isFile() && $file->getExtension() === 'js') {
         $js_file_path = substr($file->getPathname(), $path_head_length);
-        $js_script_tag .= "<script src='./app/public{$js_file_path}'></script>\r\n";
+        $js_script_tag .= "<script src='./assets/{$js_file_path}'></script>\r\n";
     }
 }
 
