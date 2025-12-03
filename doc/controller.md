@@ -285,3 +285,65 @@ Controllerは以下の役割を持ちます:
 - 処理後のリダイレクト
 
 これらの機能により、安全で保守性の高いコードを簡潔に記述できます。
+
+## 重要な注意点
+
+### コントローラーファイル末尾でインスタンスを返す
+
+**必須**: コントローラーファイルの末尾には、必ず `return new ClassName;` を記述してください。
+
+```php
+class Login extends Controller
+{
+    public static function name(): string { return 'login'; }
+
+    public function main(): void
+    {
+        // 処理...
+        $this->redirect($this->redirectUrl);
+        exit;
+    }
+}
+return new Login; // ← 必須！
+```
+
+これを忘れると「requireからクラスのインスタンスが取得できません」というエラーが発生します。
+
+### 名前空間をファイルパスと一致させる
+
+名前空間は、ファイルの配置場所と完全に一致させる必要があります:
+
+```php
+// ファイル: /app/controller/session/Login.php
+namespace ayutenn\skeleton\app\controller\session; // ← ファイルパスと一致
+
+// ファイル: /app/controller/Register.php
+namespace ayutenn\skeleton\app\controller; // ← ファイルパスと一致
+```
+
+不一致の場合、オートローダーがクラスを見つけられず、"Class not found" エラーが発生します。
+
+### コントローラーはビューを直接表示しない
+
+コントローラーは処理を行った後、必ずリダイレクトしてください。
+ビューを表示したい場合でも、ビュー内で直接表示するのではなく、ビューのURLにリダイレクトします:
+
+```php
+// ✅ 正しい例
+public function main(): void
+{
+    // 処理...
+    $this->redirect('/profile'); // ビューのURLにリダイレクト
+    exit;
+}
+```
+
+```php
+// ❌ 間違った例
+public function main(): void
+{
+    require_once(__DIR__ . '/../views/profile.php'); // ビューを直接読み込まない
+}
+```
+
+ビューは `route.php` で `'view'` タイプとして定義し、ビュー内で必要なデータを取得してください。

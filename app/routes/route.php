@@ -26,7 +26,7 @@ return [
 
     new RouteGroup('', [
         new Route('GET',  '/top',              'view',       '/main/top'),
-        new Route('GET',  '/profile',          'controller', '/Profile'),
+        new Route('GET',  '/profile',          'view',       '/main/profile'),
         new Route('POST', '/profile/update',   'controller', '/UpdateProfile'),
     ], [$need_auth])
 ];

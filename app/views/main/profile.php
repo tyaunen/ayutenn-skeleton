@@ -2,8 +2,25 @@
 use ayutenn\core\config\Config;
 use ayutenn\core\session\AlertsSession;
 use ayutenn\core\utils\CsrfTokenManager;
+use ayutenn\core\utils\Redirect;
+use ayutenn\core\database\DbConnector;
+use ayutenn\skeleton\app\database\UserManager;
+use ayutenn\skeleton\app\helper\Auth;
 
-// $user 変数は Profile コントローラーから渡される想定
+// ログインユーザーの情報を取得
+$login_user = Auth::getLoginUser();
+$user_id = $login_user['id'];
+
+$pdo = DbConnector::connectWithPdo();
+$user_manager = new UserManager($pdo);
+$result = $user_manager->getUser($user_id);
+
+if (!$result->isSucceed()) {
+    // ユーザー情報が取得できない場合はログアウトへリダイレクト
+    Redirect::redirect('./logout');
+}
+
+$user = $result->data[0];
 
 // CSRFトークン生成
 $csrf_manager = new CsrfTokenManager();

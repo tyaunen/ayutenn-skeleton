@@ -158,7 +158,7 @@ class AddApi extends Api
         'number3' => ['name' => '数値3', 'format' => 'easy_calc_number', 'require' => false], // この項目は任意
     ];
 
-    // 任意項目は、is not setだった場合のみバリデートをスキップします。
+    // 任意項目は、issetではなかった場合のみバリデートをスキップします。
     $num1 = $this->parameter['number1'];
     $num2 = $this->parameter['number2'];
     $num3 = $this->parameter['number3'] ?? 0;

@@ -235,6 +235,47 @@ if ($result->isSucceed()) {
 - **getCodeName()**: 終了状態の名前を取得 (string)
 - **data**: 処理結果のデータ (public プロパティ)
 
+### 重要: QueryResultのdataプロパティへのアクセス
+
+`QueryResult` クラスの `data` プロパティは **public** で、getter メソッドは存在しません。
+データにアクセスする際は、直接 `$result->data` を使用してください。
+
+```php
+// ✅ 正しい例
+$result = $userManager->getUser($user_id);
+if ($result->isSucceed()) {
+    $user = $result->data[0]; // data プロパティに直接アクセス
+}
+```
+
+```php
+// ❌ 間違った例
+$user = $result->getData(); // getData() メソッドは存在しない
+```
+
+### 重要: データは配列の配列として扱う
+
+`executeAndFetchAll()` は常に配列の配列を返します。
+単一行を取得する場合でも、`data[0]` で最初の要素を取得する必要があります。
+
+```php
+// ユーザーを1件取得する場合
+$result = $userManager->getUser($user_id);
+if ($result->isSucceed()) {
+    $user = $result->data[0]; // ← [0] で最初の行を取得
+    echo $user['user_name'];
+}
+
+// 複数件取得する場合
+$result = $userManager->getUsers(0, 100);
+if ($result->isSucceed()) {
+    $users = $result->data; // ← 配列の配列
+    foreach ($users as $user) {
+        echo $user['user_name'];
+    }
+}
+```
+
 ## 実践的な例
 
 ### ユーザーの作成
