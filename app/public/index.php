@@ -42,7 +42,7 @@ session_set_cookie_params([
     'lifetime' => 60*60*24*7,
     'path' => '/',
     'domain' => $_SERVER['HTTP_HOST'],
-    'secure' => true,      // HTTPSの場合のみ送信
+    'secure' => !empty($_SERVER['HTTPS']),      // HTTPSの場合のみ送信
     'httponly' => true,    // JavaScriptからのアクセスを禁止
     'samesite' => 'Lax'
 ]);

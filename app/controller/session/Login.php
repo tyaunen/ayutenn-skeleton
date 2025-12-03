@@ -1,5 +1,5 @@
 <?php
-namespace ayutenn\skeleton\app\controller;
+namespace ayutenn\skeleton\app\controller\session;
 
 use ayutenn\core\requests\Controller;
 use ayutenn\core\utils\Logger;
@@ -17,7 +17,7 @@ class Login extends Controller{
     ];
 
     protected string $redirectUrl = '/top';
-    protected string $redirectUrlWhenError = '/';
+    protected string $redirectUrlWhenError = '/login';
 
     public function main(): void
     {
@@ -47,3 +47,4 @@ class Login extends Controller{
         }
     }
 }
+return new Login;

@@ -51,7 +51,7 @@ foreach ($session_messages as $msg) {
             <div id="toast-container"></div>
             <main-content>
                 <div class="content-block">
-                    <h1>ayutenn setup ok</h1>
+                    <h1>ayutenn setup ok (Logged In)</h1>
 
                     <?php if (!empty($alert_messages)): ?>
                         <?php foreach ($alert_messages as $message): ?>
@@ -69,9 +69,7 @@ foreach ($session_messages as $msg) {
                         <?php endforeach; ?>
                     <?php endif; ?>
 
-                    <p>
-                        <a href="./register" class="btn btn-primary">ユーザー登録</a>
-                    </p>
+                    <p>ようこそ！</p>
                 </div>
             </main-content>
         </main>

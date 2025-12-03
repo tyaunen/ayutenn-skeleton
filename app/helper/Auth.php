@@ -24,7 +24,7 @@ class Auth
         }
 
         // パスワード検証
-        $user = $result->data;
+        $user = $result->data[0];
         if (!password_verify($password, $user['password'])) {
             return false;
         }

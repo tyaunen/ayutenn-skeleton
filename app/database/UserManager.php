@@ -11,11 +11,13 @@ class UserManager extends DataManager
      * ユーザー作成
      *
      * @param string $user_id
+     * @param string $user_name
      * @param string $password
      * @return QueryResult
      */
     public function createUser(
         string $user_id,
+        string $user_name,
         string $password
     ): QueryResult
     {
@@ -30,6 +32,7 @@ class UserManager extends DataManager
         $sql = <<<SQL
             INSERT INTO user(
                 user_id,
+                user_name,
                 profile,
                 password,
                 last_login,
@@ -39,8 +42,10 @@ class UserManager extends DataManager
             )
             VALUES(
                 :user_id,
+                :user_name,
                 '',
                 :password,
+                CURRENT_TIMESTAMP(),
                 CURRENT_TIMESTAMP(),
                 CURRENT_TIMESTAMP(),
                 0
@@ -49,6 +54,7 @@ class UserManager extends DataManager
 
         $params = [
             ':user_id' => [$user_id, PDO::PARAM_STR],
+            ':user_name' => [$user_name, PDO::PARAM_STR],
             ':password' => [$hashed_password, PDO::PARAM_STR],
         ];
 
@@ -75,7 +81,7 @@ class UserManager extends DataManager
 
         $sql = <<<SQL
             SELECT
-                mst.*
+                user.*
             FROM
                 user
             WHERE
@@ -118,7 +124,7 @@ class UserManager extends DataManager
 
         $sql = <<<SQL
             SELECT
-                mst.*
+                user.*
             FROM
                 user
             WHERE
@@ -150,7 +156,7 @@ class UserManager extends DataManager
             UPDATE user
             SET
                 user_name     = :user_name,
-                user_profile  = :user_profile,
+                profile  = :user_profile,
                 on_update     = CURRENT_TIMESTAMP()
             WHERE
                 user_id = :user_id
