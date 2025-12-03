@@ -1,0 +1,17 @@
+{
+    "APP_NAME": "ayutenn_skeleton",
+    "APP_TITLE": "ayutenn_skeleton test",
+
+    "PATH_ROOT": "/ayutenn_skeleton",
+
+    "APP_DIR": "/ayutenn_skeleton/app",
+    "ROUTE_DIR": "/ayutenn_skeleton/app/routes",
+    "CONTROLLER_DIR": "/ayutenn_skeleton/app/controller",
+    "VIEW_DIR": "/ayutenn_skeleton/app/views",
+    "API_DIR": "/ayutenn_skeleton/app/api",
+    "MODEL_DIR": "/ayutenn_skeleton/app/model",
+    "LOG_DIR": "/ayutenn_skeleton/storage/logs",
+    "SESSION_DIR": "/ayutenn_skeleton/storage/session",
+
+    "404_PAGE_FILE": "/system/404"
+}

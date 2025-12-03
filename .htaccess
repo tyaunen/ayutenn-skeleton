@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# =============================
+# 【1】静的ファイルへの直リンクを許可
+# =============================
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpe?g|apng|gif|svg|webp|ico|woff2?|ttf|eot|mp4|webm|json|svg)$ [NC]
+RewriteRule ^ - [L]
+
+# =============================
+# 【2】それ以外は index.php に転送
+# =============================
+RewriteRule ^.*$ app/public/index.php [QSA,L]

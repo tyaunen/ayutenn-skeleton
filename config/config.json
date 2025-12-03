@@ -1,0 +1,9 @@
+{
+    "DEBUG_MODE": true,
+    "PDO_DSN": "mysql:host=localhost;dbname=ayutennv1;charset=utf8mb4",
+    "PDO_USERNAME": "root",
+    "PDO_PASSWORD": "",
+
+    "DISCORD_WEBHOOK_USER_NAME": "Discord Webhook送信時のユーザー名",
+    "DISCORD_WEBHOOK_AVATAR_ICON": "https://aaaa.png"
+}
