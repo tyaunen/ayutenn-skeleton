@@ -1,8 +1,8 @@
 {
     "name": "tyaunen/ayutenn-skeleton",
-    "description": "ayutennは、御茶請稔によるオレオレフレームワークです。第三者からの利用は想定していません。",
+    "description": "ayutennフレームワークのプロジェクトテンプレート。composer create-projectでインストールして使用します。",
     "version": "1.0.0",
-    "type": "library",
+    "type": "project",
     "license": "CC-BY-1.0",
     "authors": [
         {
@@ -27,5 +27,14 @@
             "type": "vcs",
             "url": "git@github.com:tyaunen/ayunenn-core.git"
         }
-    ]
+    ],
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php -r \"copy('config/config.json.example', 'config/config.json');\"",
+            "@php scripts/download_assets.php"
+        ],
+        "post-install-cmd": [
+            "@php scripts/download_assets.php"
+        ]
+    }
 }

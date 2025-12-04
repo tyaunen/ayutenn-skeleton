@@ -74,7 +74,7 @@ foreach ($session_messages as $msg) {
                     <?php endif; ?>
 
                     <p>
-                        <a href="./register" class="btn btn-primary">ユーザー登録</a>
+                        <a href="./sample-register" class="btn btn-primary">ユーザー登録 (サンプル)</a>
                     </p>
                 </div>
             </main-content>
@@ -84,10 +84,11 @@ foreach ($session_messages as $msg) {
         function test() {
             // axiosを使って、apiを叩くサンプル
             axios.get(
-                './api/get/number', {}
+                './api/sample', {}
             )
             .then(response => {
                 console.log(response.data.payload);
+                alert('API Response: ' + JSON.stringify(response.data.payload));
             })
             .catch(function(error){
                 console.log(error)

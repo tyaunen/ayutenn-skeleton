@@ -476,3 +476,8 @@ composer.lock
 
 
 /storage/
+
+# Project specific
+/config/config.json
+/app/public/assets/js/@lib/axios.min.js
+/app/public/assets/js/@lib/Sortable.min.js

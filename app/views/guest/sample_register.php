@@ -1,15 +1,30 @@
 <?php
+/**
+ * ============================================
+ * サンプルビュー: sample_register.php
+ * ============================================
+ *
+ * このファイルはayutennフレームワークのビューの実装例です。
+ * 新しいビューを作成する際の参考にしてください。
+ *
+ * 【ポイント】
+ * - ビュー内で必要なデータを取得する
+ * - CSRFトークンをフォームに含める
+ * - Form Remainでエラー時の入力値を復元
+ * - AlertsSessionでメッセージを表示
+ * - 出力時はhtmlspecialchars()でエスケープ
+ */
 use ayutenn\core\config\Config;
 use ayutenn\core\session\AlertsSession;
 use ayutenn\core\utils\CsrfTokenManager;
-use ayutenn\skeleton\app\controller\Register;
+use ayutenn\skeleton\app\controller\SampleRegister;
 
 // CSRFトークン生成
 $csrf_manager = new CsrfTokenManager();
 $csrf_token = $csrf_manager->getToken();
 
 // Form Remain: エラー時の入力値復元
-$remain_params = Register::getRemainRequestParameter();
+$remain_params = SampleRegister::getRemainRequestParameter();
 $user_id = $remain_params['user-id'] ?? '';
 $user_name = $remain_params['user-name'] ?? '';
 
@@ -28,13 +43,10 @@ foreach ($session_messages as $msg) {
 ?>
 
 <!DOCTYPE html>
-
-
-<!DOCTYPE html>
 <html lang="ja" data-bs-theme="dark" prefix="og: http://ogp.me/ns#">
 
 <head>
-    <title>ユーザー登録 <?= Config::getAppSetting('APP_TITLE') ?></title>
+    <title>サンプル登録フォーム <?= Config::getAppSetting('APP_TITLE') ?></title>
     <?php require(__DIR__ . '/../components/flat/head.php'); ?>
     <style>
         .wrapper {
@@ -77,11 +89,6 @@ foreach ($session_messages as $msg) {
             font-size: 16px;
             box-sizing: border-box;
         }
-        .form-group input:focus {
-            outline: none;
-            border-color: #007bff;
-            background: rgba(255, 255, 255, 0.15);
-        }
         .submit-btn {
             width: 100%;
             padding: 12px;
@@ -92,10 +99,6 @@ foreach ($session_messages as $msg) {
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-        .submit-btn:hover {
-            background: #0056b3;
         }
         .alert {
             padding: 12px;
@@ -112,27 +115,19 @@ foreach ($session_messages as $msg) {
             border: 1px solid #0dcaf0;
             color: #6dd5ed;
         }
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-            color: #aaa;
-        }
-        .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .wrapper {
-                flex-direction: column;
-            }
+        .sample-note {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #ffc107;
+            color: #ffc107;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
         }
     </style>
 </head>
 
-<body data-page-name='register'>
+<body data-page-name='sample-register'>
     <header class="main-header">
         <div class="container">
             <h2><?= Config::getAppSetting('APP_TITLE') ?></h2>
@@ -145,7 +140,11 @@ foreach ($session_messages as $msg) {
         <main class="main-content">
             <div class="register-container">
                 <div class="register-form">
-                    <h1>ユーザー登録</h1>
+                    <h1>サンプル登録フォーム</h1>
+
+                    <div class="sample-note">
+                        📝 これはサンプルビューです。フォーム処理の実装例として参考にしてください。
+                    </div>
 
                     <?php if (!empty($alert_messages)): ?>
                         <?php foreach ($alert_messages as $message): ?>
@@ -163,7 +162,8 @@ foreach ($session_messages as $msg) {
                         <?php endforeach; ?>
                     <?php endif; ?>
 
-                    <form method="POST" action="./register">
+                    <!-- フォームにはCSRFトークンを必ず含める -->
+                    <form method="POST" action="./sample-register">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
 
                         <div class="form-group">
@@ -214,10 +214,6 @@ foreach ($session_messages as $msg) {
 
                         <button type="submit" class="submit-btn">登録</button>
                     </form>
-
-                    <div class="login-link">
-                        既にアカウントをお持ちですか? <a href="./login">ログイン</a>
-                    </div>
                 </div>
             </div>
         </main>

@@ -82,10 +82,11 @@ foreach ($session_messages as $msg) {
         function test() {
             // axiosを使って、apiを叩くサンプル
             axios.get(
-                './api/get/number', {}
+                './api/sample', {}
             )
             .then(response => {
                 console.log(response.data.payload);
+                alert('API Response: ' + JSON.stringify(response.data.payload));
             })
             .catch(function(error){
                 console.log(error)
