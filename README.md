@@ -1,7 +1,7 @@
 # ayutenn-skeleton
 
-ayutennフレームワークのプロジェクトテンプレートです。
-このテンプレートを使用することで、素早くWebアプリケーション開発を開始できます。
+[ayutenn](https://github.com/tyaunen/ayunenn-core)のプロジェクトテンプレートです。
+ayutenn/coreのREADME.mdに必ず目を通すこと。
 
 ## 必要要件
 
@@ -16,8 +16,6 @@ Composerを使用してプロジェクトを作成します。
 ```bash
 composer create-project tyaunen/ayutenn-skeleton my-project --repository='{"type":"vcs","url":"https://github.com/tyaunen/ayutenn-skeleton"}'
 ```
-
-※ 現在はプライベートリポジトリのため、`--repository` オプションが必要です。Packagist公開後は不要になります。
 
 ## セットアップ手順
 
@@ -38,16 +36,11 @@ composer create-project tyaunen/ayutenn-skeleton my-project --repository='{"type
 
 ### 2. データベースの準備
 
-データベースを作成し、`database/schema.sql` を実行してテーブルを作成してください。
+データベースを作成し、サンプルが必要であれば`database/schema.sql` を実行してテーブルを作成してください。
 
 ```bash
 mysql -u root -p YOUR_DATABASE_NAME < database/schema.sql
 ```
-
-### 3. Webサーバーの設定
-
-ドキュメントルートを `public/` ディレクトリに設定してください。
-Apacheの場合は `.htaccess` が既に用意されています。
 
 ## ディレクトリ構造
 
@@ -73,6 +66,9 @@ vendor/             # Composer依存ライブラリ
 - **認証**: ログイン、ログアウト (`app/controller/session/`)
 - **登録**: サンプル登録フォーム (`app/controller/SampleRegister.php`)
 - **API**: サンプルAPI (`app/api/SampleApi.php`)
+
+## その他
+概ね`/doc`に 全部書いてあります。
 
 ## ライセンス
 
