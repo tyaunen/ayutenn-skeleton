@@ -11,7 +11,6 @@
         404-header
     </header>
     <main class="container">
-        <?= URL_ROOT ?>
     </main>
 </body>
 
