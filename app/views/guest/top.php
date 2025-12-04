@@ -40,13 +40,7 @@ foreach ($session_messages as $msg) {
 </head>
 
 <body data-page-name='top'>
-    <header class="main-header">
-        header
-    </header>
-
     <div class="wrapper">
-        <?php require(__DIR__ . '/../components/sidebar.php'); ?>
-
         <main class="main-content">
             <div id="toast-container"></div>
             <main-content>
@@ -72,10 +66,6 @@ foreach ($session_messages as $msg) {
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
-
-                    <p>
-                        <a href="./sample-register" class="btn btn-primary">ユーザー登録 (サンプル)</a>
-                    </p>
                 </div>
             </main-content>
         </main>

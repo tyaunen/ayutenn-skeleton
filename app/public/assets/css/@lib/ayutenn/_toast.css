@@ -1,0 +1,76 @@
+/*----------------------------------------------------------
+ * トースト通知
+ *---------------------------------------------------------*/
+#toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toast {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: var(--text-inverse);
+    font-weight: 500;
+    animation: toast-slidein 0.3s ease;
+    cursor: pointer;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.toast-info {
+    background: var(--info);
+    color: white;
+}
+
+.toast-success {
+    background: var(--success);
+    color: white;
+}
+
+.toast-warning {
+    background: var(--warning);
+    color: var(--text-inverse);
+}
+
+.toast-error {
+    background: var(--error);
+    color: white;
+}
+
+/* Progress bar for auto-dismiss */
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: toast-progress linear forwards;
+}
+
+@keyframes toast-slidein {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes toast-progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}

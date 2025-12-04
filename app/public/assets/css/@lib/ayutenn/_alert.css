@@ -1,0 +1,40 @@
+/*----------------------------------------------------------
+ * アラート
+ *---------------------------------------------------------*/
+.alert {
+    padding: 10px;
+    margin-bottom: 3px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+
+    /* Default style */
+    border-color: var(--border-color);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.alert-info {
+    border-color: var(--info-border);
+    background-color: var(--info-bg);
+    color: var(--info-text);
+}
+
+.alert-success {
+    border-color: var(--success-border);
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.alert-warning {
+    border-color: var(--warning-border);
+    background-color: var(--warning-bg);
+    color: var(--warning-text);
+}
+
+.alert-error {
+    border-color: var(--error-border);
+    background-color: var(--error-bg);
+    color: var(--error-text);
+}
