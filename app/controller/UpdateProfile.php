@@ -42,4 +42,4 @@ class UpdateProfile extends Controller{
         }
     }
 }
-return new UpdateProfile;
+return new UpdateProfile();
