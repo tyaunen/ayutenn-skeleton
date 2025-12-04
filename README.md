@@ -10,11 +10,10 @@ ayutenn/coreのREADME.mdに必ず目を通すこと。
 - MySQL (または互換性のあるデータベース)
 
 ## インストール
-
-Composerを使用してプロジェクトを作成します。
-
 ```bash
-composer create-project tyaunen/ayutenn-skeleton my-project --repository='{"type":"vcs","url":"https://github.com/tyaunen/ayutenn-skeleton"}'
+git clone https://github.com/tyaunen/ayutenn-skeleton.git MyProject
+cd MyProject
+composer install
 ```
 
 ## セットアップ手順
