@@ -129,15 +129,7 @@ foreach ($session_messages as $msg) {
 </head>
 
 <body data-page-name='login'>
-    <header class="main-header">
-        <div class="container">
-            <h2><?= Config::getAppSetting('APP_TITLE') ?></h2>
-        </div>
-    </header>
-
     <div class="wrapper">
-        <?php require(__DIR__ . '/../components/sidebar.php'); ?>
-
         <main class="main-content">
             <div class="login-container">
                 <div class="login-form">

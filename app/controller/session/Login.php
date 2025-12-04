@@ -37,7 +37,7 @@ class Login extends Controller{
                 exit;
             }
         } catch (\Throwable $th) {
-            $logger = Logger::setup();
+            $logger = Logger::setup(APP_ROOT . '/storage/log');
             $logger->debug("DB接続失敗:\r\n{$th}");
 
             AlertsSession::putAlertMessageIntoSession('【なんかへんです】DB接続に失敗しました。');

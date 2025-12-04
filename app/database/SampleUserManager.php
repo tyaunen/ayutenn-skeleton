@@ -5,7 +5,7 @@ use ayutenn\core\database\DataManager;
 use ayutenn\core\database\QueryResult;
 use PDO;
 
-class UserManager extends DataManager
+class SampleUserManager extends DataManager
 {
     /**
      * ユーザー作成

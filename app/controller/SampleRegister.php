@@ -19,7 +19,7 @@ namespace ayutenn\skeleton\app\controller;
 use ayutenn\core\requests\Controller;
 use ayutenn\core\session\AlertsSession;
 use ayutenn\core\database\DbConnector;
-use ayutenn\skeleton\app\database\UserManager;
+use ayutenn\skeleton\app\database\SampleUserManager;
 
 class SampleRegister extends Controller
 {
@@ -71,7 +71,7 @@ class SampleRegister extends Controller
         try {
             // DataManagerのインスタンス化
             $pdo = DbConnector::connectWithPdo();
-            $userManager = new UserManager($pdo);
+            $userManager = new SampleUserManager($pdo);
 
             // ユーザー作成
             $result = $userManager->createUser($user_id, $user_name, $password);

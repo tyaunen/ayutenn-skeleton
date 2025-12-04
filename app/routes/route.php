@@ -15,7 +15,7 @@ $need_auth = new NeedAuth('redirect', '');
 return [
     // ゲストページ（認証不要）
     new Route('GET',  '/',                 'view', '/guest/top'),
-    new Route('GET',  '/login',            'view', '/guest/login'),
+    new Route('GET',  '/sample-login',            'view', '/guest/sample_login'),
 
     // ログイン・ログアウト処理
     new Route('POST', '/session/login',    'controller', '/session/Login'),

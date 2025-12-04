@@ -135,8 +135,6 @@ foreach ($session_messages as $msg) {
     </header>
 
     <div class="wrapper">
-        <?php require(__DIR__ . '/../components/sidebar.php'); ?>
-
         <main class="main-content">
             <div class="register-container">
                 <div class="register-form">

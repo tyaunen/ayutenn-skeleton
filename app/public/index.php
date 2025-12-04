@@ -23,6 +23,7 @@ Config::reset(__DIR__ . '/../../config');
 
 // URLトップ
 define('URL_ROOT', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . Config::getAppSetting('PATH_ROOT'));
+define('APP_ROOT', __DIR__ . '/../..');
 
 /*-------------------------------------------------
 * ログイン時間関係の設定
