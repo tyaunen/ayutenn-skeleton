@@ -65,7 +65,7 @@ class SampleRegister extends Controller
         if ($password !== $password_confirm) {
             AlertsSession::putAlertMessageIntoSession('パスワードが一致しません。');
             $this->redirect($this->redirectUrlWhenError);
-            exit;
+            return;
         }
 
         try {
@@ -81,18 +81,20 @@ class SampleRegister extends Controller
                 AlertsSession::putInfoMessageIntoSession('ユーザー登録が完了しました！');
                 $this->unsetRemain(); // 保持していた入力値をクリア
                 $this->redirect($this->redirectUrl);
+                return;
             } else {
                 // 失敗時: エラーメッセージを設定してリダイレクト
                 AlertsSession::putAlertMessageIntoSession($result->getErrorMessage());
                 $this->redirect($this->redirectUrlWhenError);
+                return;
             }
-            exit;
 
         } catch (\Throwable $th) {
             // 例外時の処理
             AlertsSession::putAlertMessageIntoSession('【エラー】ユーザー登録に失敗しました。');
             $this->redirect($this->redirectUrlWhenError);
-            exit;
+            return;
+
         }
     }
 }

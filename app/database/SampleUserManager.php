@@ -45,9 +45,9 @@ class SampleUserManager extends DataManager
                 :user_name,
                 '',
                 :password,
-                CURRENT_TIMESTAMP(),
-                CURRENT_TIMESTAMP(),
-                CURRENT_TIMESTAMP(),
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
                 0
             );
         SQL;
@@ -157,7 +157,7 @@ class SampleUserManager extends DataManager
             SET
                 user_name     = :user_name,
                 profile  = :user_profile,
-                on_update     = CURRENT_TIMESTAMP()
+                on_update     = CURRENT_TIMESTAMP
             WHERE
                 user_id = :user_id
             ;

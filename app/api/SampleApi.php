@@ -17,6 +17,8 @@
 namespace ayutenn\skeleton\app\api;
 
 use ayutenn\core\requests\Api;
+use ayutenn\core\database\DbConnector;
+use ayutenn\skeleton\app\database\SampleUserManager;
 
 class SampleApi extends Api
 {
@@ -24,7 +26,9 @@ class SampleApi extends Api
      * リクエストパラメータのバリデーションルール
      * 空の場合はバリデーションなし
      */
-    protected array $RequestParameterFormat = [];
+    protected array $RequestParameterFormat = [
+        'user-id' => ['name' => 'ユーザーID', 'format' => 'user_id'],
+    ];
 
     /**
      * APIのメイン処理
@@ -32,15 +36,23 @@ class SampleApi extends Api
      */
     public function main(): array
     {
-        // レスポンスデータを作成
-        $data = [
-            'message' => 'これはサンプルAPIです',
-            'random_number' => mt_rand(0, 100),
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
+        $user_id = $this->parameter['user-id'];
 
-        // createResponse(成功/失敗, データ)でレスポンスを返す
-        return $this->createResponse(true, $data);
+        // ユーザー情報を取得
+        $pdo = DbConnector::connectWithPdo();
+        $manager = new SampleUserManager($pdo);
+        $result = $manager->getUser($user_id);
+
+        if ($result->isSucceed()) {
+            // 成功時: ユーザー情報を返す
+            // getUserの結果は配列の配列なので、最初の要素を取得
+            $userData = $result->data[0];
+            // ユーザー名のみを返す
+            return $this->createResponse(true, ['user_name' => $userData['user_name']]);
+        } else {
+            // 失敗時: エラーメッセージを返す
+            return $this->createResponse(false, ['message' => $result->getErrorMessage()]);
+        }
     }
 }
 
