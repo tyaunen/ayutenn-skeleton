@@ -2,7 +2,7 @@
 namespace ayutenn\skeleton\app\helper;
 
 use ayutenn\core\database\DbConnector;
-use ayutenn\skeleton\app\database\UserManager;
+use ayutenn\skeleton\app\database\SampleUserManager;
 
 class Auth
 {
@@ -15,7 +15,7 @@ class Auth
     {
         // PDO接続
         $pdo = DbConnector::connectWithPdo();
-        $user_manager = new UserManager($pdo);
+        $user_manager = new SampleUserManager($pdo);
 
         // ユーザーの存在チェック
         $result = $user_manager->getUser($user_id);
