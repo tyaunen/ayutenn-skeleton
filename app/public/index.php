@@ -2,8 +2,10 @@
 require_once(__DIR__ . '/../../vendor/autoload.php');
 use ayutenn\core\config\Config;
 use ayutenn\core\routing\Router;
+use ayutenn\core\session\AlertsSession;
 use ayutenn\core\utils\Uuid;
 use ayutenn\core\utils\CsrfTokenManager;
+use ayutenn\core\utils\Redirect;
 
 /**
  * 【概要】
@@ -62,8 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$csrf_manager->validateToken($submittedToken)) {
         // CSRFトークンの時間切れ
-        // TODO: TOPページにリダイレクト
         http_response_code(403);
+        AlertsSession::putErrorMessageIntoSession('タイムアウトです。ページを開いてからデータを送信するまで時間がかかりすぎたかもしれません。');
+        Redirect::redirect(URL_ROOT);
     } else {
         // トークンの最終アクセス時刻を更新
         $csrf_manager->getToken();
