@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayutenn - Accordion & Modal</title>
+    <link rel="stylesheet" href="assets/css/@lib/ayutenn.css">
+    <link rel="stylesheet" href="assets/css/sample-common.css">
+</head>
+<body>
+    <nav class="sample-nav">
+        <a href="sample.html" class="nav-home">🏠 Home</a>
+        <a href="sample-grid.html">Grid</a>
+        <a href="sample-forms.html">Forms</a>
+        <a href="sample-alerts.html">Alerts</a>
+        <a href="sample-accordion.html" class="active">Accordion</a>
+        <a href="sample-tabs.html">Tabs</a>
+        <a href="sample-uploader.html">Uploader</a>
+        <a href="sample-utils.html">Utils</a>
+    </nav>
+
+    <h1>Accordion & Modal</h1>
+    <p class="subtitle">折りたたみとダイアログ</p>
+
+    <section>
+        <h2>Accordion</h2>
+        <div class="demo-area">
+            <button class="accordion-btn accordion-btn-primary mb-2" data-accordion-target="#acc1">📁 アコーディオン1</button>
+            <div id="acc1" class="accordion mb-3">
+                <div class="accordion-content">コンテンツ1</div>
+            </div>
+            <button class="accordion-btn mb-2" data-accordion-target="#acc2">📂 アコーディオン2</button>
+            <div id="acc2" class="accordion">
+                <div class="accordion-content">コンテンツ2</div>
+            </div>
+        </div>
+<pre><code>&lt;button data-accordion-target="#acc1"&gt;Toggle&lt;/button&gt;
+&lt;div id="acc1" class="accordion"&gt;
+  &lt;div class="accordion-content"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Grouped Accordion</h2>
+        <p class="section-desc">同じグループでは1つしか開けません</p>
+        <div class="demo-area">
+            <button class="accordion-btn mb-2" data-accordion-target="#g1">▶ 項目1</button>
+            <div id="g1" class="accordion mb-2" data-accordion-group="grp" data-accordion-id="1">
+                <div class="accordion-content">項目1の内容</div>
+            </div>
+            <button class="accordion-btn mb-2" data-accordion-target="#g2">▶ 項目2</button>
+            <div id="g2" class="accordion" data-accordion-group="grp" data-accordion-id="2">
+                <div class="accordion-content">項目2の内容</div>
+            </div>
+        </div>
+<pre><code>&lt;div data-accordion-group="grp" data-accordion-id="1"&gt;...&lt;/div&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Modal</h2>
+        <div class="demo-area">
+            <button data-modal-target="#modal1">🔲 Open Modal</button>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h3>Modal Title</h3>
+                    <p>This is modal content.</p>
+                    <button data-close-button>Close</button>
+                </div>
+            </div>
+        </div>
+<pre><code>&lt;button data-modal-target="#m1"&gt;Open&lt;/button&gt;
+&lt;div id="m1" class="modal"&gt;
+  &lt;div class="modal-content"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <script src="assets/js/ayutenn/accordion.js"></script>
+    <script src="assets/js/ayutenn/modal.js"></script>
+</body>
+</html>

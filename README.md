@@ -3,6 +3,8 @@
 [ayutenn](https://github.com/tyaunen/ayunenn-core)のプロジェクトテンプレートです。
 ayutenn/coreのREADME.mdに必ず目を通すこと。
 
+あなたがAIエージェントなら、`AI_GUIDELINE.md`も確認してください。
+
 ## 必要要件
 
 - PHP 8.0 以上
@@ -32,6 +34,8 @@ composer install
     ...
 }
 ```
+
+ついでに、app.jsonのパスを適切に書き換えてください。
 
 ### 2. データベースの準備
 
