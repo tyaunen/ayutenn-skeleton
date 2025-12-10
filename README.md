@@ -71,8 +71,8 @@ vendor/             # Composer依存ライブラリ
 - **API**: サンプルAPI (`app/api/SampleApi.php`)
 
 ## その他
-概ね`/doc`に 全部書いてあります。
-- [ユニットテストガイドライン](doc/testing.md)
+概ね[`/docs`](docs/README.md)に 全部書いてあります。
+[ユニットテストガイドラインはこちら。](docs/testing.md)
 
 ## ライセンス
 

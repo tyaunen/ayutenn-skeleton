@@ -25,6 +25,11 @@ class SampleApi extends Api
     /**
      * リクエストパラメータのバリデーションルール
      * 空の場合はバリデーションなし
+     *
+     * 以下のように定義します。
+     * 'リクエストパラメタのキー' => ['name' => 'エラー時に表示される項目名', 'format' => '/model中のモデルファイル名(.jsonは省略)']
+     *
+     * モデルファイルがない場合、新規作成する必要があります。
      */
     protected array $RequestParameterFormat = [
         'user-id' => ['name' => 'ユーザーID', 'format' => 'user_id'],
@@ -32,7 +37,7 @@ class SampleApi extends Api
 
     /**
      * APIのメイン処理
-     * @return array createResponse()で作成したレスポンス配列を返す
+     * @return array createResponse()で作成したレスポンス配列
      */
     public function main(): array
     {

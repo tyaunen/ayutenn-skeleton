@@ -30,8 +30,13 @@ class SampleRegister extends Controller
     public static function name(): string { return 'sample_register'; }
 
     /**
-     * リクエストパラメータのバリデーションルール定義
-     * 各パラメータに対してmodel/ディレクトリのJSONファイルを参照
+     * リクエストパラメータのバリデーションルール
+     * 空の場合はバリデーションなし
+     *
+     * 以下のように定義します。
+     * 'リクエストパラメタのキー' => ['name' => 'エラー時に表示される項目名', 'format' => '/model中のモデルファイル名(.jsonは省略)']
+     *
+     * モデルファイルがない場合、新規作成する必要があります。
      */
     protected array $RequestParameterFormat = [
         'user-id' => ['name' => 'ユーザーID', 'format' => 'user_id'],
