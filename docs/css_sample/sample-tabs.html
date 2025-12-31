@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayutenn - Tabs & Popover</title>
+    <link rel="stylesheet" href="assets/css/@lib/ayutenn.css">
+    <link rel="stylesheet" href="assets/css/sample-common.css">
+</head>
+<body>
+    <nav class="sample-nav">
+        <a href="sample.html" class="nav-home">🏠 Home</a>
+        <a href="sample-grid.html">Grid</a>
+        <a href="sample-forms.html">Forms</a>
+        <a href="sample-alerts.html">Alerts</a>
+        <a href="sample-accordion.html">Accordion</a>
+        <a href="sample-tabs.html" class="active">Tabs</a>
+        <a href="sample-uploader.html">Uploader</a>
+        <a href="sample-utils.html">Utils</a>
+    </nav>
+
+    <h1>Tabs & Popover</h1>
+    <p class="subtitle">タブとポップオーバー</p>
+
+    <section>
+        <h2>Tabs</h2>
+        <div class="demo-area">
+            <div class="tabs">
+                <div class="tab active" data-tab-group="t1" data-tab-target="c1">Tab 1</div>
+                <div class="tab" data-tab-group="t1" data-tab-target="c2">Tab 2</div>
+            </div>
+            <div class="tab-content show" data-tab-group="t1" data-tab-id="c1">
+                <div class="demo-box demo-box-light">Tab 1 Content</div>
+            </div>
+            <div class="tab-content" data-tab-group="t1" data-tab-id="c2">
+                <div class="demo-box demo-box-light">Tab 2 Content</div>
+            </div>
+        </div>
+<pre><code>&lt;div class="tabs"&gt;
+  &lt;div class="tab active" data-tab-group="t1" data-tab-target="c1"&gt;Tab&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="tab-content show" data-tab-group="t1" data-tab-id="c1"&gt;...&lt;/div&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Popover</h2>
+        <div class="demo-area">
+            <div class="popover">
+                <button class="link">🎯 Toggle Popover</button>
+                <div class="content">Popover content here</div>
+            </div>
+        </div>
+<pre><code>&lt;div class="popover"&gt;
+  &lt;button class="link"&gt;Toggle&lt;/button&gt;
+  &lt;div class="content"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Tooltip</h2>
+        <div class="demo-area">
+            <div class="tooltip-container">
+                <button>Hover me</button>
+                <div class="tooltip">Tooltip text!</div>
+            </div>
+        </div>
+<pre><code>&lt;div class="tooltip-container"&gt;
+  &lt;button&gt;Hover&lt;/button&gt;
+  &lt;div class="tooltip"&gt;Text&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </section>
+
+    <script src="assets/js/ayutenn/tab.js"></script>
+    <script src="assets/js/ayutenn/popover.js"></script>
+</body>
+</html>

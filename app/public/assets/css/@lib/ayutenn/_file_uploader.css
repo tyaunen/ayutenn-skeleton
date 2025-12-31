@@ -1,0 +1,34 @@
+/*----------------------------------------------------------
+ * ファイルアップローダー
+ *---------------------------------------------------------*/
+.file-uploader {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+
+    &:hover,
+    &.highlight {
+        border-color: var(--primary);
+        background: var(--primary-bg);
+    }
+
+    .icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .file-uploader-text {
+        font-weight: 500;
+    }
+
+    .file-uploader-hint {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "tyaunen/ayutenn-skeleton",
+    "description": "ayutennフレームワークのプロジェクトテンプレート。composer create-projectでインストールして使用します。",
+    "version": "1.0.0",
+    "type": "project",
+    "license": "CC-BY-1.0",
+    "authors": [
+        {
+            "name": "minoru otyauke"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "tyaunen/ayutenn-core": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ayutenn\\skeleton\\": "./"
+        }
+    },
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:tyaunen/ayutenn-core.git"
+        }
+    ],
+    "scripts": {
+        "test": "phpunit",
+        "post-create-project-cmd": [
+            "@php -r \"copy('config/config.json.example', 'config/config.json');\"",
+            "@php -r \"if (!is_dir('migrations')) mkdir('migrations', 0755, true);\"",
+            "@php -r \"if (!is_dir('tables')) mkdir('tables', 0755, true);\"",
+            "@php -r \"if (!is_dir('storage')) mkdir('storage', 0755, true);\"",
+            "@php -r \"if (!is_dir('storage/session')) mkdir('storage/session', 0755, true);\"",
+            "@php scripts/download_assets.php"
+        ],
+        "post-install-cmd": [
+            "@php scripts/download_assets.php"
+        ]
+    }
+}

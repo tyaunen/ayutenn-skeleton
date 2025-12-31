@@ -1,0 +1,16 @@
+{
+    "APP_NAME": "ayutenn_skeleton",
+    "APP_TITLE": "ayutenn_skeleton test",
+
+    "APP_DIR": "/app",
+    "ROUTE_DIR": "/app/routes",
+    "CONTROLLER_DIR": "/app/controller",
+    "VIEW_DIR": "/app/views",
+    "API_DIR": "/app/api",
+    "MODEL_DIR": "/app/model",
+    "PUBLIC_DIR": "/app/public",
+    "LOG_DIR": "/storage/logs",
+    "SESSION_DIR": "/storage/session",
+
+    "404_PAGE_FILE": "/system/404"
+}

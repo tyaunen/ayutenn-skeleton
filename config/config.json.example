@@ -1,0 +1,9 @@
+{
+    "DEBUG_MODE": true,
+    "PDO_DSN": "mysql:host=localhost;dbname=YOUR_DATABASE_NAME;charset=utf8mb4",
+    "PDO_USERNAME": "YOUR_USERNAME",
+    "PDO_PASSWORD": "YOUR_PASSWORD",
+
+    "DISCORD_WEBHOOK_USER_NAME": "Discord Webhook送信時のユーザー名",
+    "DISCORD_WEBHOOK_AVATAR_ICON": "https://example.com/avatar.png"
+}

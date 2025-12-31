@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# 1. 実在するファイルはそのまま返す
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 2. 静的ファイル → app/public へ付替え
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|mp4|webm|json)$ [NC]
+RewriteRule ^(.*)$ app/public/$1 [L]
+
+# 3. 動的 → index.php に集約
+RewriteRule ^.*$ app/public/index.php [QSA,L]
