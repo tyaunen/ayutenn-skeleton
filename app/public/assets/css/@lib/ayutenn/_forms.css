@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * Form Elements
  *---------------------------------------------------------*/
 
@@ -7,11 +7,11 @@ input, select, textarea, .select-holder, .select-options {
     width: fit-content;
     padding: 6px 6px;
     margin: 0 0 10px 0;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--ay-border-color);
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
+    background-color: var(--ay-bg-secondary);
+    color: var(--ay-text-primary);
 
     &[type="color"] {
         width: 40px;
@@ -19,30 +19,30 @@ input, select, textarea, .select-holder, .select-options {
     }
 
     &::placeholder {
-        color: var(--text-placeholder);
+        color: var(--ay-text-placeholder);
     }
 
     &:focus, &:focus-visible {
         outline: 0;
         box-shadow: none;
-        border-color: var(--primary);
+        border-color: var(--ay-primary);
     }
 
     &:disabled {
-        color: var(--text-muted);
-        background-color: var(--border-dark);
-        border-color: var(--border-dark);
+        color: var(--ay-text-muted);
+        background-color: var(--ay-border-dark);
+        border-color: var(--ay-border-dark);
         cursor: not-allowed;
 
         &::placeholder {
-            color: var(--text-placeholder);
+            color: var(--ay-text-placeholder);
         }
     }
 }
 
 button {
-    background-color: var(--border-color);
-    color: var(--text-primary);
+    background-color: var(--ay-border-color);
+    color: var(--ay-text-primary);
     padding: 7.5px 10px;
     border: none;
     border-radius: 5px;
@@ -53,7 +53,7 @@ button {
     box-sizing: border-box;
 
     &:hover {
-        background-color: var(--bg-hover);
+        background-color: var(--ay-bg-hover);
     }
 }
 
@@ -66,7 +66,7 @@ button {
     font-size: 90%;
     font-weight: 600;
 
-    color: var(--text-secondary);
+    color: var(--ay-text-secondary);
     padding-right: 5px;
 
     &.inline {
@@ -79,4 +79,51 @@ button {
 .input-group{
     display: flex;
     flex-wrap: nowrap
+}
+
+/*----------------------------------------------------------
+ * Checkbox & Radio Labels
+ *---------------------------------------------------------*/
+.checkbox-label,
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--ay-border-color);
+    border-radius: 6px;
+    background-color: var(--ay-bg-secondary);
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.95rem;
+}
+
+.checkbox-label:hover,
+.radio-label:hover {
+    background-color: var(--ay-bg-hover);
+    border-color: var(--ay-border-light);
+}
+
+.checkbox-label:has(input:checked),
+.radio-label:has(input:checked) {
+    background-color: var(--ay-bg-tertiary);
+    border-color: var(--ay-primary);
+    box-shadow: 0 0 0 1px var(--ay-primary-bg);
+}
+
+.checkbox-label input[type="checkbox"],
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--ay-primary);
+    cursor: pointer;
+}
+
+/* Checkbox/Radio Group */
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }

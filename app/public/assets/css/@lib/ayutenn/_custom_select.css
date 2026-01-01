@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * カスタムセレクト
  *---------------------------------------------------------*/
 .custom-select {
@@ -12,16 +12,16 @@
 
         padding: 10px;
         grid-column: span 12;
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
+        background-color: var(--ay-bg-secondary);
+        color: var(--ay-text-primary);
+        border: 1px solid var(--ay-border-color);
         border-radius: 5px;
 
         transition: background-color 0.2s;
         cursor: pointer;
 
         &:hover {
-            background-color: var(--bg-hover);
+            background-color: var(--ay-bg-hover);
         }
 
         &:after {
@@ -30,21 +30,16 @@
             flex-grow: 1;
             font-size: 12px;
             margin: 0 10px;
-            color: var(--text-muted);
+            color: var(--ay-text-muted);
         }
 
         .select-holder-content {
             display: flex;
             flex-wrap: wrap;
-            grid-column: span 12;
-
-            .option-header {
-                grid-column: span 12;
-            }
+            flex-direction: column;
 
             .option-detail {
-                grid-column: span 12;
-                color: var(--text-muted);
+                color: var(--ay-text-muted);
                 font-size: 14px;
             }
         }
@@ -55,9 +50,9 @@
         position: absolute;
         padding: 0;
         margin: 0;
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
+        background-color: var(--ay-bg-secondary);
+        color: var(--ay-text-primary);
+        border: 1px solid var(--ay-border-color);
         border-radius: 5px;
         top: 100%;
         left: 0;
@@ -74,17 +69,17 @@
             flex-wrap: wrap;
             grid-column: span 12;
             padding: 10px;
-            background-color: var(--bg-secondary);
-            color: var(--text-primary);
+            background-color: var(--ay-bg-secondary);
+            color: var(--ay-text-primary);
             transition: background-color 0.2s;
             cursor: pointer;
 
             &:hover {
-                background-color: var(--bg-hover);
+                background-color: var(--ay-bg-hover);
             }
 
             &.chosen {
-                background-color: var(--primary-bg);
+                background-color: var(--ay-primary-bg);
             }
 
             .option-header {
@@ -93,7 +88,7 @@
 
             .option-detail {
                 grid-column: span 12;
-                color: var(--text-muted);
+                color: var(--ay-text-muted);
                 font-size: 14px;
             }
         }

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Ayutenn CSS Framework
  * Modular CSS framework for responsive layouts and utilities
  */
@@ -19,3 +19,5 @@
 @import url('./_toast.css');
 @import url('./_tooltip.css');
 @import url('./_util.css');
+@import url('./_display.css');
+@import url('./_text_counter.css');

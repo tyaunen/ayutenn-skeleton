@@ -80,3 +80,15 @@ Desktop.ini
 !/storage/session/
 /storage/session/*
 !/storage/session/.gitkeep
+
+# ========================================
+# ayutenn-cssから自動コピーされるファイル
+# ========================================
+app/public/assets/css/@lib/ayutenn/
+app/public/assets/js/@lib/ayutenn/
+.agent/workflows/css/
+
+# ========================================
+# ayutenn-coreから自動コピーされるファイル
+# ========================================
+.agent/workflows/core/

@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * タブ
  *---------------------------------------------------------*/
 .tabs {
@@ -9,17 +9,17 @@
     .tab {
         text-align: center;
         padding: 20px;
-        background: var(--bg-tertiary);
-        color: var(--text-secondary);
+        background: var(--ay-bg-tertiary);
+        color: var(--ay-text-secondary);
         transition: 0.3s;
 
         &:hover {
-            background: var(--bg-hover);
+            background: var(--ay-bg-hover);
         }
 
         &.active {
-            background: var(--primary);
-            color: var(--primary-contrast);
+            background: var(--ay-primary);
+            color: var(--ay-primary-contrast);
         }
     }
 }

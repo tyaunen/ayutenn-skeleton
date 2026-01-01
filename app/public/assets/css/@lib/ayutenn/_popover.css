@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * ポップオーバー
  *---------------------------------------------------------*/
 .popover {
@@ -13,9 +13,9 @@
         z-index: 100;
 
         text-align: center;
-        background-color: var(--bg-tertiary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
+        background-color: var(--ay-bg-tertiary);
+        color: var(--ay-text-primary);
+        border: 1px solid var(--ay-border-color);
 
         padding: 10px;
         border-radius: 4px;

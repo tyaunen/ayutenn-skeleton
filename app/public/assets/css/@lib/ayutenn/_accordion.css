@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * アコーディオン
  *---------------------------------------------------------*/
 .accordion {
@@ -16,9 +16,9 @@
 
 .accordion-content {
     padding: 1rem 1.25rem;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    background: var(--ay-bg-secondary);
+    color: var(--ay-text-primary);
+    border: 1px solid var(--ay-border-color);
     border-top: none;
     border-radius: 0 0 8px 8px;
 }
@@ -28,7 +28,7 @@
     width: 100%;
     text-align: left;
     padding: 1rem 1.25rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--ay-border-color);
     border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
@@ -36,22 +36,22 @@
     align-items: center;
     gap: 0.5rem;
     transition: all 0.2s;
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
+    background: var(--ay-bg-tertiary);
+    color: var(--ay-text-primary);
 
     &:hover {
         opacity: 0.9;
     }
 
     &.accordion-btn-primary {
-        background: var(--primary);
-        color: var(--primary-contrast);
-        border-color: var(--primary-dark);
+        background: var(--ay-primary);
+        color: var(--ay-primary-contrast);
+        border-color: var(--ay-primary-dark);
     }
 
     &.accordion-btn-secondary {
-        background: var(--success);
+        background: var(--ay-success);
         color: white;
-        border-color: var(--success-border);
+        border-color: var(--ay-success-border);
     }
 }

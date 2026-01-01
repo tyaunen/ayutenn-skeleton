@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * トースト通知
  *---------------------------------------------------------*/
 #toast-container {
@@ -16,7 +16,7 @@
     overflow: hidden;
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    color: var(--text-inverse);
+    color: var(--ay-text-inverse);
     font-weight: 500;
     animation: toast-slidein 0.3s ease;
     cursor: pointer;
@@ -25,22 +25,22 @@
 }
 
 .toast-info {
-    background: var(--info);
+    background: var(--ay-info);
     color: white;
 }
 
 .toast-success {
-    background: var(--success);
+    background: var(--ay-success);
     color: white;
 }
 
 .toast-warning {
-    background: var(--warning);
-    color: var(--text-inverse);
+    background: var(--ay-warning);
+    color: var(--ay-text-inverse);
 }
 
 .toast-error {
-    background: var(--error);
+    background: var(--ay-error);
     color: white;
 }
 

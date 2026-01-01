@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * CSS Variables
  * 🎨 Override these variables for your theme!
  *---------------------------------------------------------*/
@@ -11,12 +11,12 @@
  * 以下の値を変更する場合は_grid.css, _flexbox.css,
  * _spacing.cssの各ファイルも更新してください。
  *
- * --bp-sm:   576px   (スマートフォン横)
- * --bp-md:   768px   (タブレット)
- * --bp-lg:   992px   (デスクトップ)
- * --bp-xl:   1200px  (大型デスクトップ)
- * --bp-xxl:  1400px  (超大型モニタ)
- * --bp-xxxl: 1680px  (ワイドモニタ)
+ * --ay-bp-sm:   576px   (スマートフォン横)
+ * --ay-bp-md:   768px   (タブレット)
+ * --ay-bp-lg:   992px   (デスクトップ)
+ * --ay-bp-xl:   1200px  (大型デスクトップ)
+ * --ay-bp-xxl:  1400px  (超大型モニタ)
+ * --ay-bp-xxxl: 1680px  (ワイドモニタ)
  *
  * Container max-widths:
  * sm: 540px, md: 720px, lg: 960px,
@@ -25,72 +25,72 @@
  */
 
 :root {
-    --spacer: 5;
+    --ay-spacer: 5;
 
 
     /* ============================================
      * 🎨 PRIMARY COLORS - Override these!
      * ============================================ */
-    --primary: #ab4c4c;
-    --primary-light: #b56a6a;
-    --primary-dark: #621010;
-    --primary-bg: #4b0c0c;
-    --primary-contrast: #ffffff;  /* Text color on primary */
+    --ay-primary: #ab4c4c;
+    --ay-primary-light: #b56a6a;
+    --ay-primary-dark: #621010;
+    --ay-primary-bg: #4b0c0c;
+    --ay-primary-contrast: #ffffff;  /* Text color on primary */
 
     /* ============================================
      * 📝 TEXT COLORS
      * ============================================ */
-    --text-primary: #eeeeee;      /* Main text */
-    --text-secondary: #cccccc;    /* Secondary text */
-    --text-muted: #888888;        /* Muted text */
-    --text-placeholder: #555555;  /* Placeholder text */
-    --text-inverse: #1f1f1f;      /* Dark text for light bg */
+    --ay-text-primary: #eeeeee;      /* Main text */
+    --ay-text-secondary: #cccccc;    /* Secondary text */
+    --ay-text-muted: #888888;        /* Muted text */
+    --ay-text-placeholder: #555555;  /* Placeholder text */
+    --ay-text-inverse: #1f1f1f;      /* Dark text for light bg */
 
     /* ============================================
      * 🖼️ BACKGROUND COLORS
      * ============================================ */
-    --bg-primary: #1a1a1a;        /* Main background */
-    --bg-secondary: #222222;      /* Secondary background */
-    --bg-tertiary: #2a2a2a;       /* Tertiary background */
-    --bg-light: #fefefe;          /* Light background */
-    --bg-overlay: rgba(0, 0, 0, 0.5);
-    --bg-hover: rgba(255, 255, 255, 0.1);
+    --ay-bg-primary: #1a1a1a;        /* Main background */
+    --ay-bg-secondary: #222222;      /* Secondary background */
+    --ay-bg-tertiary: #2a2a2a;       /* Tertiary background */
+    --ay-bg-light: #fefefe;          /* Light background */
+    --ay-bg-overlay: rgba(0, 0, 0, 0.5);
+    --ay-bg-hover: rgba(255, 255, 255, 0.1);
 
     /* ============================================
      * 🔲 BORDER COLORS
      * ============================================ */
-    --border-color: #505050;
-    --border-light: #404040;
-    --border-dark: #333333;
+    --ay-border-color: #505050;
+    --ay-border-light: #404040;
+    --ay-border-dark: #333333;
 
     /* ============================================
      * ⚠️ STATUS COLORS - For alerts & toasts
      * ============================================ */
-    --info: #3b82f6;
-    --info-bg: #1e3a5f;
-    --info-border: #2563eb;
-    --info-text: #93c5fd;
+    --ay-info: #3b82f6;
+    --ay-info-bg: #1e3a5f;
+    --ay-info-border: #2563eb;
+    --ay-info-text: #93c5fd;
 
-    --success: #22c55e;
-    --success-bg: #14532d;
-    --success-border: #16a34a;
-    --success-text: #86efac;
+    --ay-success: #22c55e;
+    --ay-success-bg: #14532d;
+    --ay-success-border: #16a34a;
+    --ay-success-text: #86efac;
 
-    --warning: #f59e0b;
-    --warning-bg: #451a03;
-    --warning-border: #d97706;
-    --warning-text: #fcd34d;
+    --ay-warning: #f59e0b;
+    --ay-warning-bg: #451a03;
+    --ay-warning-border: #d97706;
+    --ay-warning-text: #fcd34d;
 
-    --error: #ef4444;
-    --error-bg: #450a0a;
-    --error-border: #dc2626;
-    --error-text: #fca5a5;
+    --ay-error: #ef4444;
+    --ay-error-bg: #450a0a;
+    --ay-error-border: #dc2626;
+    --ay-error-text: #fca5a5;
 
     /* ============================================
      * 🔘 GRAY SCALE
      * ============================================ */
-    --gray-100: #c2c2c2;
-    --gray-400: #777777;
-    --gray-500: #555555;
-    --gray-800: #1d1d1d;
+    --ay-gray-100: #c2c2c2;
+    --ay-gray-400: #777777;
+    --ay-gray-500: #555555;
+    --ay-gray-800: #1d1d1d;
 }

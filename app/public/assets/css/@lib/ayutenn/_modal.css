@@ -1,4 +1,4 @@
-/*----------------------------------------------------------
+﻿/*----------------------------------------------------------
  * モーダル
  *---------------------------------------------------------*/
 .modal {
@@ -15,7 +15,7 @@
     height: 100%;
     width: 100%;
 
-    background-color: var(--bg-overlay);
+    background-color: var(--ay-bg-overlay);
     transition: opacity 0.3s, scale 0s 0.3s;
     opacity: 0;
     scale: 0;
@@ -42,9 +42,9 @@
         margin: auto;
 
         overflow-y: auto;
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
+        background-color: var(--ay-bg-secondary);
+        color: var(--ay-text-primary);
+        border: 1px solid var(--ay-border-color);
         border-radius: 5px;
         transition: transform 0.3s;
         transform: translateY(-15%);
@@ -53,7 +53,7 @@
             position: absolute;
             top: -15px;
             right: 10px;
-            color: var(--text-muted);
+            color: var(--ay-text-muted);
             text-decoration: none;
             cursor: pointer;
             background: transparent;
@@ -61,7 +61,7 @@
             font-size: 45px;
 
             &:hover {
-                color: var(--text-primary);
+                color: var(--ay-text-primary);
             }
         }
     }
