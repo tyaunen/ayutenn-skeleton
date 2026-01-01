@@ -82,6 +82,12 @@ Desktop.ini
 !/storage/session/.gitkeep
 
 # ========================================
+# CDNから自動ダウンロードされるファイル
+# ========================================
+app/public/assets/js/@lib/axios.min.js
+app/public/assets/js/@lib/Sortable.min.js
+
+# ========================================
 # ayutenn-cssから自動コピーされるファイル
 # ========================================
 app/public/assets/css/@lib/ayutenn/
