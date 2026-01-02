@@ -1,12 +1,13 @@
 # Controller
 
-このドキュメントでは、skeletonプロジェクトでのControllerファイルの作成方法を説明します。
+このドキュメントでは、フォーム処理を行うControllerの実装方法を説明します。
 
 ## フレームワークリファレンス
 
-Controller基底クラスのAPIリファレンスについては、ayutenn-coreのドキュメントを参照してください：
+Controller基底クラスの詳細仕様：
+- **[requests.md](../../vendor/tyaunen/ayutenn-core/docs/requests.md)**
 
-- **[requests.md](../../vendor/tyaunen/ayutenn-core/docs/requests.md)** - Controller/Api基底クラスの詳細仕様、プロパティ、メソッド一覧
+---
 
 ## 命名規則
 Controllerファイルは、クラス名がファイル名と一致する必要があります。

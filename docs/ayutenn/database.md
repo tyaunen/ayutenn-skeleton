@@ -1,12 +1,13 @@
 # Database (データベース操作)
 
-このドキュメントでは、skeletonプロジェクトでのDataManagerクラスの作成方法を説明します。
+このドキュメントでは、DataManagerクラスを使用したデータベース操作の実装方法を説明します。
 
 ## フレームワークリファレンス
 
-DataManager、DbConnector、QueryResultクラスのAPIリファレンスについては、ayutenn-coreのドキュメントを参照してください：
+DataManager、DbConnector、QueryResultクラスの詳細仕様：
+- **[database.md](../../vendor/tyaunen/ayutenn-core/docs/database.md)**
 
-- **[database.md](../../vendor/tyaunen/ayutenn-core/docs/database.md)** - クラスの詳細仕様、メソッド一覧、使用例
+---
 
 ## DataManagerとは
 DataManagerは、データベースへのアクセスを管理する抽象クラスです。

@@ -2,6 +2,13 @@
 
 宣言的なマイグレーションツールです。テーブル定義をJSONファイルで管理し、実際のデータベースとの差分からDDL（SQLファイル）を自動生成します。
 
+## フレームワークリファレンス
+
+MigrationManagerクラスの詳細仕様：
+- **[migration.md](../../vendor/tyaunen/ayutenn-core/docs/migration.md)**
+
+---
+
 ## 概要
 
 ayutennはより柔軟に型やSQLを扱うために、ORMを採用していません。

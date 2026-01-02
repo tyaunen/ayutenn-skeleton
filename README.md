@@ -1,5 +1,6 @@
 # ayutenn-skeleton
 オレオレフレームワーク、ayutennのプロジェクトテンプレートです。
+個人的利用のためにのみ作られているため、俺以外の利用はまったく推奨しません。
 
 [ayutenn-core](https://github.com/tyaunen/ayunenn-core)
 [ayutenn-css](https://github.com/tyaunen/ayunenn-css)
@@ -53,6 +54,7 @@ vendor/             # Composer依存ライブラリ
 ## ライセンス
 
 CC-BY-1.0
+※ ただし依存するライブラリのライセンスは別途ご確認ください。現在axios.js、Sortable.jsに依存しています。
 
 ## 作者
 

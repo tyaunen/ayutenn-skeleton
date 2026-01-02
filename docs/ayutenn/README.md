@@ -1,92 +1,81 @@
 # ayutenn ドキュメント
 
-これは、ayutennについての実装ガイドとベストプラクティスが格納されています。
+このディレクトリには、ayutennフレームワークの**実装ガイド**と**ベストプラクティス**が格納されています。
+
+> [!TIP]
+> クラスやメソッドの詳細仕様は、[ayutenn-core/docs/](../../vendor/tyaunen/ayutenn-core/docs/) を参照してください。
+
+---
 
 ## ayutennとは？
 
 ayutennは、PHPで作成するWebアプリケーションを構築するためのフレームワークです。
-以下の3つから構成されます。
 
-* **ayutenn-css** - CSS/JSライブラリです。簡素な装飾と、タブやモーダルなどの基本的なコンポーネントを提供します。
-* **ayutenn-core** - ayutennのコア機能を提供するライブラリです。ルーティング、データベース、バリデーション、セッション管理など、Webアプリケーションの基本機能を提供します。
-* **ayutenn-skeleton** - ayutennのプロジェクトテンプレートです。基本的なディレクトリ構造・ファイルを提供します。
+| コンポーネント | 説明 |
+|--------------|------|
+| **ayutenn-css** | CSS/JSライブラリ。簡素な装飾と基本的なUIコンポーネント |
+| **ayutenn-core** | フレームワークのコア。ルーティング、バリデーション、DB操作など |
+| **ayutenn-skeleton** | プロジェクトテンプレート。ディレクトリ構造とサンプルファイル |
 
-ayutenn-skeletonをgit cloneして、composer installを実行することで、使用可能な状態になります。
+---
 
-## プロジェクトガイド
+## ドキュメント一覧
 
-このプロジェクトでの実装方法・実践例については、以下のドキュメントを参照してください。
+### [intro.md](intro.md) - はじめに
+フレームワークの概要、セットアップ、ディレクトリ構造、リクエスト処理の流れ。
+**初めての方はここから読んでください。**
 
-### [intro.md](intro.md)
-ayutennフレームワークの概要、ディレクトリ構造、処理の流れについて説明しています。
-**初めてこのフレームワークを使用する方は、まずこのファイルをお読みください。**
+### [routing.md](routing.md) - ルート定義
+URLパターンと処理のマッピング。4種類のルートアクション、RouteGroup、ミドルウェア。
 
-### [controller.md](controller.md)
-Controllerファイルの作成方法と使用方法について説明しています。
-- 命名規則と格納場所
-- 必須メソッドの実装
-- リクエストパラメータのバリデーション
-- Form Remain機能
-- 実行フローの詳細
+### [view.md](view.md) - ビュー
+HTMLテンプレートの作成。データ取得、フラッシュメッセージ、フォーム、CSRFトークン。
 
-### [api.md](api.md)
-APIファイルの作成方法と使用方法について説明しています。
-- 命名規則と格納場所
-- JSON形式のレスポンス
-- リクエストパラメータのバリデーション
-- エラーハンドリング
+### [controller.md](controller.md) - コントローラー
+フォーム処理の実装。バリデーション、Form Remain、PRGパターン。
 
-### [model.md](model.md)
-モデルファイル(バリデーションルール定義)の作成方法について説明しています。
-- JSON形式での型定義
-- 文字列型・数値型のプロパティ
-- 条件(condition)による形式制限
-- 実践的な使用例
-- ControllerやAPIでの使用方法
+### [api.md](api.md) - API
+JSONレスポンスを返すAPIの実装。バリデーション、エラーハンドリング。
 
-### [database.md](database.md)
-DataManager(データベース操作)の作成方法について説明しています。
-- DataManagerの継承と基本メソッド
-- executeStatement()とexecuteAndFetchAll()の使い方
-- QueryResultによる結果管理
-- CRUD操作の実践例
-- ControllerやAPIでの使用方法
+### [model.md](model.md) - バリデーションルール
+JSONファイルでの型・形式定義。Controller/APIでの自動バリデーション、DB定義での再利用。
 
-### [routing.md](routing.md)
-ルート定義の作成方法について説明しています。
-- 4種類のルートアクション(view, controller, api, redirect)
-- RouteとRouteGroupの使い方
-- ミドルウェアによる認証・認可
-- HTTPメソッドとパスの定義
-- 実践的なルート定義例
+### [database.md](database.md) - データベース操作
+DataManagerの実装。CRUD操作、QueryResult、パラメータバインド。
 
-### [view.md](view.md)
-ビューファイルの作成方法について説明しています。
-- 基本的な構造
-- データの取得とリダイレクト
-- アラートメッセージの表示
-- フォームとCSRFトークン
-- コンポーネントの利用
+### [migration.md](migration.md) - マイグレーション
+JSON定義からDDL SQLを生成。テーブル定義の管理。
 
-### [testing.md](testing.md)
-ユニットテストの実装方法について説明しています。
-- 基本方針(PHPUnit, SQLiteインメモリDB)
-- データベーステストの実装
-- コントローラーテストの実装
-- トラブルシューティング
+### [testing.md](testing.md) - テスト
+PHPUnitによるユニットテスト、インテグレーションテストの実装。
 
-### [best-practices.md](best-practices.md)
-よくある間違いと推奨される実装方法について説明しています。
+### [best-practices.md](best-practices.md) - ベストプラクティス
+よくある間違いと推奨される実装パターン。
 
 ---
 
 ## 推奨読書順序
 
-1. **[intro.md](intro.md)** - フレームワーク全体の理解
-2. **[model.md](model.md)** - バリデーションルールの定義方法
-3. **[database.md](database.md)** - データベース操作の実装
-4. **[controller.md](controller.md)** - フォーム処理の実装
-5. **[api.md](api.md)** - API開発
-6. **[routing.md](routing.md)** - ルート定義とミドルウェア
-7. **[view.md](view.md)** - ビューファイルの作成
-8. **[testing.md](testing.md)** - ユニットテストの実装
+```
+1. intro.md          ← フレームワーク全体の理解
+2. routing.md        ← URLと処理のマッピング
+3. model.md          ← バリデーションルールの定義
+4. database.md       ← データベース操作
+5. controller.md     ← フォーム処理
+6. api.md            ← API開発
+7. view.md           ← ビュー作成
+8. testing.md        ← テスト実装
+```
+
+---
+
+## クイックリファレンス
+
+| やりたいこと | 参照先 |
+|------------|-------|
+| プロジェクトのセットアップ | [intro.md](intro.md) |
+| 新しいページを追加したい | [routing.md](routing.md) → [view.md](view.md) |
+| フォームを作りたい | [model.md](model.md) → [controller.md](controller.md) |
+| APIを作りたい | [model.md](model.md) → [api.md](api.md) |
+| DBテーブルを作りたい | [migration.md](migration.md) |
+| テストを書きたい | [testing.md](testing.md) |

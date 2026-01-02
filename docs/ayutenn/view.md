@@ -1,18 +1,19 @@
 # View (ビュー)
 
-このドキュメントでは、skeletonプロジェクトでのビューファイルの作成方法を説明します。
+このドキュメントでは、HTMLを生成するビューファイルの作成方法を説明します。
 
 ## フレームワークリファレンス
 
-ビューで使用するユーティリティクラス（Redirect、CsrfTokenManager、FlashMessage等）については、ayutenn-coreのドキュメントを参照してください：
-
-- **[utils.md](../../vendor/tyaunen/ayutenn-core/docs/utils.md)** - Redirect、CsrfTokenManager等のユーティリティ
+ビューで使用するユーティリティの詳細仕様：
+- **[utils.md](../../vendor/tyaunen/ayutenn-core/docs/utils.md)** - Redirect, CsrfTokenManager
 - **[session.md](../../vendor/tyaunen/ayutenn-core/docs/session.md)** - FlashMessage
 
-## ビューとは
+---
 
-ビューは、HTMLを生成してユーザーに表示するためのPHPファイルです。
-ayutennフレームワークでは、ビューはルート定義で `'view'` タイプとして指定され、直接読み込まれます。
+## 概要
+
+ビューは、HTMLを生成してユーザーに表示するPHPファイルです。
+ルート定義で `'view'` タイプとして指定され、直接実行されます。
 
 ## 格納ディレクトリ
 

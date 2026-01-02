@@ -1,5 +1,16 @@
 # ayutenn フレームワーク 概要
 
+このドキュメントでは、ayutennフレームワークのセットアップとプロジェクト構造について説明します。
+
+## フレームワークリファレンス
+
+設定やパス管理の詳細仕様については、ayutenn-coreのドキュメントを参照してください：
+
+- **[config.md](../../vendor/tyaunen/ayutenn-core/docs/config.md)** - Configクラスの詳細仕様
+- **[framework_paths.md](../../vendor/tyaunen/ayutenn-core/docs/framework_paths.md)** - FrameworkPathsクラスの詳細仕様
+
+---
+
 ## セットアップ
 ```bash
 git clone https://github.com/tyaunen/ayutenn-skeleton.git MyProject
@@ -126,7 +137,7 @@ HTMLテンプレートを格納します。
 #### `/migrations`
 - マイグレーションのための定義ファイルと、定義ファイルをもとに出力したDDL SQLファイルを格納します。
 
-詳細: [migrations.md](migrations.md)
+詳細: [migration.md](migration.md)
 
 #### `/scripts`
 - composerによるアップデート時起動プログラムなど、ユーティリティスクリプトを格納します。

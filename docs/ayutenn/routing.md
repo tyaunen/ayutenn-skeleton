@@ -1,17 +1,18 @@
 # Routing (ルート定義)
 
-このドキュメントでは、skeletonプロジェクトでのルート定義の実装方法を説明します。
+このドキュメントでは、URLパターンと処理のマッピングを定義する方法を説明します。
 
 ## フレームワークリファレンス
 
-Route、RouteGroup、MiddlewareクラスのAPIリファレンスについては、ayutenn-coreのドキュメントを参照してください：
+Route、RouteGroup、Middlewareクラスの詳細仕様：
+- **[routing.md](../../vendor/tyaunen/ayutenn-core/docs/routing.md)**
 
-- **[routing.md](../../vendor/tyaunen/ayutenn-core/docs/routing.md)** - クラスの詳細仕様、コンストラクタ引数、メソッド一覧
+---
 
-## ルート定義とは
+## 概要
 
-ルート定義は、URLパターンと処理(Controller、API、View)のマッピングを定義するものです。
-Routerはリクエストされたページ(URL)とHTTPメソッドを基に、ルート定義を検索して適切な処理を実行します。
+ルート定義は、URLパターンと処理(Controller、API、View)のマッピングです。
+RouterはリクエストURLとHTTPメソッドに基づいて、適切な処理を実行します。
 
 ## 格納ディレクトリ
 
