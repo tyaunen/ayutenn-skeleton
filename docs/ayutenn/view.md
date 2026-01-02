@@ -40,23 +40,47 @@ use ayutenn\core\session\FlashMessage;
 ?>
 
 <!DOCTYPE html>
-<html lang="ja" data-bs-theme="dark">
+<html lang="ja" prefix="og: http://ogp.me/ns#">
 <head>
-    <title><?= Config::get('APP_TITLE') ?></title>
-    <?php require(__DIR__ . '/../components/flat/head.php'); ?>
+    <title><?= Config::get('APP_TITLE') ?> トップページ</title>
+    <?php require(PROJECT_ROOT . '/app/views/components/flat/head.php'); ?>
 </head>
 
-<body>
-    <header class="main-header">
-        <h2><?= Config::get('APP_TITLE') ?></h2>
+<body data-page-name='top'>
+    <header>
+        <h1>ayutennへようこそ！</h1>
     </header>
-
     <main>
-        <h1>ページタイトル</h1>
         <p>コンテンツ</p>
     </main>
 </body>
 </html>
+```
+
+## パスの指定
+`/app/views/components/flat/head.php`を、必ずすべてのページでheadタグの内容としてrequireしてください。
+baseタグでリンクを制御しています。
+```php
+// /app/public/index.php
+define('URL_ROOT', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . PATH_ROOT);
+```
+```html
+<!-- /app/views/components/flat/head.php -->
+<base href="<?= URL_ROOT ?>/">
+```
+
+htaccessに変更を加えていなければ、静的ファイルへの直接アクセスは`/app/public`内でのみ許可されているかつ、`/app/public`を省略したものとして扱われます。
+つまり、`/app/public/assets/img/common/icon.png`をビューで表示する場合、以下のように書くことができます。
+
+```html
+<img src="./assets/img/common/icon.png">
+```
+リンクやリダイレクトはこうです。
+```html
+<a href="./user/login">Login</a>
+```
+```php
+Redirect::redirect(URL_ROOT . '/user/login');
 ```
 
 ## データの取得
@@ -69,6 +93,7 @@ use ayutenn\core\session\FlashMessage;
 use ayutenn\core\database\DbConnector;
 use ayutenn\skeleton\app\database\UserManager;
 use ayutenn\skeleton\app\helper\Auth;
+use ayutenn\core\utils\Redirect;
 
 // ログインユーザーの情報を取得
 $login_user = Auth::getLoginUser();
@@ -80,29 +105,15 @@ $result = $user_manager->getUser($user_id);
 
 if (!$result->isSucceed()) {
     // エラー時はリダイレクト
-    Redirect::redirect('./logout');
+    Redirect::redirect(URL_ROOT . '/logout');
 }
 
-$user = $result->data[0];
+$user = $result->getData();
 ?>
 
 <!DOCTYPE html>
 <!-- ここから通常のHTML -->
 ```
-
-## リダイレクト
-
-ビュー内でリダイレクトが必要な場合は、`Redirect` クラスを使用します。
-
-```php
-use ayutenn\core\utils\Redirect;
-
-if (!$result->isSucceed()) {
-    Redirect::redirect('./error');
-}
-```
-
-**注意**: `header('Location: ...')` は使用しないでください。
 
 ## アラートメッセージの表示
 

@@ -17,7 +17,7 @@ foreach ($session_messages as $msg) {
 ?>
 
 <!DOCTYPE html>
-<html lang="ja" data-bs-theme="dark" prefix="og: http://ogp.me/ns#">
+<html lang="ja" prefix="og: http://ogp.me/ns#">
 
 <head>
     <title>ayutenn <?= Config::get('APP_TITLE') ?></title>
@@ -54,7 +54,7 @@ foreach ($session_messages as $msg) {
                     <h1>ayutenn setup ok (Logged In)</h1>
 
                     <div style="text-align: center; margin: 20px 0;">
-                        <img src="./assets/img/common/icon.png" alt="Ayutenn Icon" style="max-width: 200px; height: auto;">
+                        <img src="assets/img/common/icon.png" alt="Ayutenn Icon" style="max-width: 200px; height: auto;">
                     </div>
 
                     <?php if (!empty($alert_messages)): ?>
@@ -82,7 +82,7 @@ foreach ($session_messages as $msg) {
         function test() {
             // axiosを使って、apiを叩くサンプル
             axios.get(
-                './api/sample', {}
+                'api/sample', {}
             )
             .then(response => {
                 console.log(response.data.payload);

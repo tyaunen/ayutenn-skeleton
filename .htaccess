@@ -1,12 +1,15 @@
 RewriteEngine On
 
-# 1. 実在するファイルはそのまま返す
-# RewriteCond %{REQUEST_FILENAME} -f
-# RewriteRule ^ - [L]
+# ===============================================
+# セキュリティ強化版 .htaccess
+# ===============================================
+# 許可リスト方式：
+# - 静的ファイルは app/public/assets/ からのみ配信
+# - それ以外のリクエストはすべて index.php にルーティング
+# ===============================================
 
-# 2. 静的ファイル → app/public へ付替え
-RewriteCond %{REQUEST_URI} \.(css|js|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|mp4|webm|json)$ [NC]
-RewriteRule ^(.*)$ app/public/$1 [L]
+# 1. assets/ へのリクエスト → app/public/assets/ へリライト（許可された拡張子のみ）
+RewriteRule ^assets/(.*\.(css|js|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|mp4|webm))$ app/public/assets/$1 [L,NC]
 
-# 3. 動的 → index.php に集約
-RewriteRule ^.*$ app/public/index.php [QSA,L]
+# 2. その他すべてのリクエスト → index.php に集約
+RewriteRule ^(?!app/public/assets/).*$ app/public/index.php [QSA,L]

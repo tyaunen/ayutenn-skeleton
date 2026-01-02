@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" data-bs-theme="dark" prefix="og: http://ogp.me/ns#">
+<html lang="ja" prefix="og: http://ogp.me/ns#">
 
 <head>
     <title>404</title>

@@ -22,26 +22,29 @@ use ayutenn\core\FrameworkPaths;
 /*-------------------------------------------------
 * パスの設定（ディレクトリ名から動的に取得）
 --------------------------------------------------*/
-define('APP_ROOT', dirname(__DIR__, 2));
-define('PATH_ROOT', '/' . basename(APP_ROOT));
+// アプリディレクトリトップ
+define('PROJECT_ROOT', dirname(__DIR__, 2));
+
+// パストップ
+define('PATH_ROOT', '/' . basename(PROJECT_ROOT));
+
+// URLトップ
+define('URL_ROOT', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . PATH_ROOT);
 
 /*-------------------------------------------------
 * ayutennの設定
 --------------------------------------------------*/
-Config::loadFromDirectory(APP_ROOT . '/config');
+Config::loadFromDirectory(PROJECT_ROOT . '/config');
 
 // ayutenn-coreのパス設定を初期化
 FrameworkPaths::init([
-    'controllerDir' => APP_ROOT . Config::get('CONTROLLER_DIR'),
-    'viewDir' => APP_ROOT . Config::get('VIEW_DIR'),
-    'apiDir' => APP_ROOT . Config::get('API_DIR'),
+    'controllerDir' => PROJECT_ROOT . Config::get('CONTROLLER_DIR'),
+    'viewDir' => PROJECT_ROOT . Config::get('VIEW_DIR'),
+    'apiDir' => PROJECT_ROOT . Config::get('API_DIR'),
     'pathRoot' => PATH_ROOT,
-    'validationRulesDir' => APP_ROOT . Config::get('MODEL_DIR'),
+    'validationRulesDir' => PROJECT_ROOT . Config::get('MODEL_DIR'),
     'notFoundView' => Config::get('404_PAGE_FILE'),
 ]);
-
-// URLトップ
-define('URL_ROOT', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . PATH_ROOT);
 
 /*-------------------------------------------------
 * ログイン時間関係の設定
@@ -55,7 +58,7 @@ ini_set('error_reporting', E_ALL);
 /*-------------------------------------------------
 * セッション開始
 --------------------------------------------------*/
-$session_path = APP_ROOT . Config::get('SESSION_DIR');
+$session_path = PROJECT_ROOT . Config::get('SESSION_DIR');
 session_save_path($session_path);
 session_set_cookie_params([
     'lifetime' => 60*60*24*7,
@@ -92,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // ログとかに使うID
 $_SESSION['AY_ACCESS_KEY'] = Uuid::generateUuid7();
 
-$route_dir = APP_ROOT . Config::get('ROUTE_DIR');
+$route_dir = PROJECT_ROOT . Config::get('ROUTE_DIR');
 $router = new Router($route_dir, PATH_ROOT);
 
 // 実行

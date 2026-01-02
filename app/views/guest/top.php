@@ -14,29 +14,16 @@ foreach ($session_messages as $msg) {
         $info_messages[] = $msg['text'];
     }
 }
+
 ?>
 
 <!DOCTYPE html>
-<html lang="ja" data-bs-theme="dark" prefix="og: http://ogp.me/ns#">
+<html lang="ja" prefix="og: http://ogp.me/ns#">
 
 <head>
     <title>ayutenn <?= Config::get('APP_TITLE') ?></title>
-    <?php require(__DIR__ . '/../components/flat/head.php'); ?>
-    <style>
-        .wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
-        .main-content {
-            flex: 1;
-            padding: 30px;
-        }
-        @media (max-width: 768px) {
-            .wrapper {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <?php require(PROJECT_ROOT . '/app/views/components/flat/head.php'); ?>
+
 </head>
 
 <body data-page-name='top'>
