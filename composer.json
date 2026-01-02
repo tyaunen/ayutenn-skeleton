@@ -44,6 +44,8 @@
             "@php scripts/download_assets.php"
         ],
         "post-install-cmd": [
+            "@php -r \"if (file_exists('config/gitignore.gist')) { copy('config/gitignore.gist', '.gitignore'); unlink('config/gitignore.gist'); }\"",
+            "@php -r \"if (file_exists('config/config.json.example')) { rename('config/config.json.example', 'config/config.json'); }\"",
             "@php scripts/download_assets.php"
         ],
         "post-update-cmd": [
