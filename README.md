@@ -1,7 +1,8 @@
 # ayutenn-skeleton
+オレオレフレームワーク、ayutennのプロジェクトテンプレートです。
 
-[ayutenn](https://github.com/tyaunen/ayunenn-core)のプロジェクトテンプレートです。
-ayutenn/coreのREADME.mdに必ず目を通すこと。
+[ayutenn-core](https://github.com/tyaunen/ayunenn-core)
+[ayutenn-css](https://github.com/tyaunen/ayunenn-css)
 
 あなたがAIエージェントなら、`AI_GUIDELINE.md`も確認してください。
 
@@ -18,10 +19,6 @@ cd MyProject
 composer install
 ```
 
-## セットアップ手順
-
-### 1. 設定ファイルの準備
-
 インストール時に `config/config.json.example` が `config/config.json` にコピーされます。
 環境に合わせて設定値を変更してください。
 
@@ -37,13 +34,6 @@ composer install
 
 ついでに、app.jsonのパスを適切に書き換えてください。
 
-### 2. データベースの準備
-
-データベースを作成し、サンプルが必要であれば`database/schema.sql` を実行してテーブルを作成してください。
-
-```bash
-mysql -u root -p YOUR_DATABASE_NAME < database/schema.sql
-```
 
 ## ディレクトリ構造
 

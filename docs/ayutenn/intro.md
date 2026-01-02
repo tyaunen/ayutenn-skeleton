@@ -1,9 +1,9 @@
-# Ayutenn フレームワーク 概要
+# ayutenn フレームワーク 概要
 
-## Ayutennとは
+## ayutennとは
 
-Ayutennは、PHPで構築されたシンプルで直感的なWebアプリケーションフレームワークです。
-このプロジェクトでは、`vendor/tyaunen/ayutenn-core`に格納されているAyutennフレームワークを使用しています。
+ayutennは、PHPで構築されたシンプルで直感的なWebアプリケーションフレームワークです。
+ayutennは`vendor/tyaunen/ayutenn-core`と`vendor/tyaunen/ayutenn-css`を使用しています。
 
 ### 設計思想
 
