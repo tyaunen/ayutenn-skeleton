@@ -19,21 +19,7 @@ cd MyProject
 composer install
 ```
 
-インストール時に `config/config.json.example` が `config/config.json` にコピーされます。
-環境に合わせて設定値を変更してください。
-
-```json
-{
-    "DEBUG_MODE": true,
-    "PDO_DSN": "mysql:host=localhost;dbname=YOUR_DATABASE_NAME;charset=utf8mb4",
-    "PDO_USERNAME": "YOUR_USERNAME",
-    "PDO_PASSWORD": "YOUR_PASSWORD",
-    ...
-}
-```
-
-ついでに、app.jsonのパスを適切に書き換えてください。
-
+ここから開発をどのように進めるかは、[/docs/ayutenn/intro.md](docs/ayutenn/intro.md)を参照してください。
 
 ## ディレクトリ構造
 

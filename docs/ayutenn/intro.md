@@ -1,69 +1,70 @@
 # ayutenn フレームワーク 概要
 
-## ayutennとは
+## セットアップ
+```bash
+git clone https://github.com/tyaunen/ayutenn-skeleton.git MyProject
+cd MyProject
+composer install
+```
 
-ayutennは、PHPで構築されたシンプルで直感的なWebアプリケーションフレームワークです。
-ayutennは`vendor/tyaunen/ayutenn-core`と`vendor/tyaunen/ayutenn-css`を使用しています。
+環境設定ファイル、`config/config.json` が生成されます。
+環境に合わせて設定値を変更してください。
 
-### 設計思想
+```json
+{
+    "DEBUG_MODE": true,
+    "PDO_DSN": "mysql:host=localhost;dbname=YOUR_DATABASE_NAME;charset=utf8mb4",
+    "PDO_USERNAME": "YOUR_DB_USERNAME",
+    "PDO_PASSWORD": "YOUR_DB_PASSWORD",
+    ...
+}
+```
 
-- **シンプルさ**: 複雑な設定や学習コストを最小限に抑え、直感的に使えることを重視
-- **実用性**: 実際の開発で必要な機能を素早く実装できる
-- **明示性**: 「魔法」のような動作を避け、コードの動きが明確
+`config/app.json`は、アプリ設定ファイルです。
 
-### 主な特徴
+ディレクトリパスの設定を変更することで自由にディレクトリ構造を変えることができますが、
+ドキュメントやAI向けワークフローはデフォルトの値を基準に記載しているので、そのまま使用することを推奨します。
 
-- **統合されたバリデーション**: JSONファイルでバリデーションルールを定義し、自動的に型変換
-- **MVCライクな構造**: Model(バリデーション定義)、View、Controller、API、Databaseを明確に分離
-- **安全なデータベースアクセス**: プリペアドステートメントとQueryResultによる統一的な結果管理
-- **CSRFトークン**: 全てのPOSTリクエストで自動的にCSRF対策
-- **セッション管理**: フラッシュメッセージ、フォーム入力値の一時保存などを標準装備
+```json
+{
+    // 必須
+    "APP_DIR": "/app",
+    "ROUTE_DIR": "/app/routes",
+    "CONTROLLER_DIR": "/app/controller",
+    "VIEW_DIR": "/app/views",
+    "API_DIR": "/app/api",
+    "MODEL_DIR": "/app/model",
+    "PUBLIC_DIR": "/app/public",
+    "LOG_DIR": "/storage/logs",
+    "SESSION_DIR": "/storage/session",
 
-### ドキュメント
+    "404_PAGE_FILE": "/system/404", // 404ページのビューファイル /system/404.php
 
-開発を始める前に、以下のドキュメントを参照してください:
+    // 任意
+    "APP_TITLE": "アプリ名", // サンプルファイルが<title>タグで使用しています
+}
+```
 
-- **[ベストプラクティス](best-practices.md)** - よくある間違いと推奨される実装方法
-- [コントローラー](controller.md) - フォーム処理とリダイレクト
-- [ビュー](view.md) - HTMLの表示とデータ取得
-- [データベース](database.md) - データベース操作
-- [モデル](model.md) - バリデーションルール定義
-- [API](api.md) - JSONレスポンスの返却
-- [ルーティング](routing.md) - URLとハンドラーのマッピング
-- [テスト](testing.md) - ユニットテストの実装
-
-
-## フレームワークドキュメント参照
-
-Ayutennフレームワークのコア機能の詳細なAPIリファレンスについては、以下のドキュメントを参照してください：
-
-- [routing.md](../../vendor/tyaunen/ayutenn-core/docs/routing.md) - Route, RouteGroup, Middleware
-- [requests.md](../../vendor/tyaunen/ayutenn-core/docs/requests.md) - Controller, Api基底クラス
-- [database.md](../../vendor/tyaunen/ayutenn-core/docs/database.md) - DataManager, DbConnector, QueryResult
-- [validation.md](../../vendor/tyaunen/ayutenn-core/docs/validation.md) - バリデーション仕様
-- [session.md](../../vendor/tyaunen/ayutenn-core/docs/session.md) - FlashMessage
-- [utils.md](../../vendor/tyaunen/ayutenn-core/docs/utils.md) - ユーティリティクラス
-- [config.md](../../vendor/tyaunen/ayutenn-core/docs/config.md) - 設定管理
-- [migration.md](../../vendor/tyaunen/ayutenn-core/docs/migration.md) - マイグレーション
+`config.json`と`app.json`ファイルの設定はayutenn/core/config/Configクラスから取得できます。
+プロジェクトに定数設定を行いたい場合、環境に依存するものなら`config.json`に、環境に依存しないものなら`app.json`に設定してください。
 
 ## ディレクトリ構造
 
 ```
 /skeleton
+├── /.agent               - AIエージェント向けワークフローファイル
 ├── /app
 │   ├── /api              - API処理(JSON形式でレスポンスを返す)
 │   ├── /controller       - コントローラー(フォーム処理後にリダイレクト)
-│   ├── /database         - DataManagerクラス(データベース操作)
+│   ├── /database         - データベース操作クラス
 │   ├── /helper           - 再利用可能なヘルパークラス・関数
 │   ├── /model            - バリデーションルール定義(JSONファイル)
-│   ├── /public           - エントリポイント(index.php)とアセット(css, js, img)
+│   ├── /public           - エントリポイント(index.php)とアセット(css, js, img, etc...)
 │   ├── /routes           - ルート定義ファイル
 │   │   └── /middleware   - ミドルウェア(ログインチェックなど)
 │   └── /views            - ビューファイル(HTML)
 │       ├── /components   - 再利用可能なHTMLコンポーネント
-│       ├── /guest        - 認証不要ページ(ログイン画面など)
-│       ├── /main         - 認証必要ページ
-│       └── /system       - システムページ(404など)
+│       └── /system       - デフォルトのシステムページ(404など)
 ├── /config
 │   ├── config.json       - 環境固有の設定(DB接続情報など)
 │   └── app.json          - アプリケーション設定(全環境共通)
@@ -72,7 +73,8 @@ Ayutennフレームワークのコア機能の詳細なAPIリファレンスに�
 │   ├── /ddl              - DDL SQLファイル
 │   └── /define           - テーブル定義(JSON)
 ├── /scripts              - ユーティリティスクリプト
-├── /storage              - アプリケーションストレージ
+├── /storage              - アプリケーションストレージ ログやユーザーアップロードファイルなど
+│   └── /session          - セッションファイル格納先
 └── /vendor               - Composer依存(ayutenn-core含む)
 ```
 
@@ -92,7 +94,7 @@ JSONレスポンスを返すAPI処理を格納します。
 
 #### `/app/database`
 `DataManager`を継承したクラスを格納します。
-テーブルごとに専用のマネージャークラスを作成し、SQL実行とデータ取得を行います。
+大機能ごとに専用のマネージャークラスを作成し、SQL実行とデータ取得を行います。
 
 詳細: [database.md](database.md)
 
@@ -118,6 +120,24 @@ HTMLテンプレートを格納します。
 - `config.json`: データベース接続情報など、環境によって異なる設定
 - `app.json`: ディレクトリパスなど、アプリケーション固有の設定
 
+#### `/docs`
+- ドキュメントを格納します。
+
+#### `/migrations`
+- マイグレーションのための定義ファイルと、定義ファイルをもとに出力したDDL SQLファイルを格納します。
+
+詳細: [migrations.md](migrations.md)
+
+#### `/scripts`
+- composerによるアップデート時起動プログラムなど、ユーティリティスクリプトを格納します。
+
+#### `/storage`
+- アプリケーションストレージ ログやユーザーアップロードファイルなど
+
+#### `/vendor`
+- composerによる依存パッケージを格納します。
+
+
 ## リクエスト処理の流れ
 
 ayutennフレームワークでのリクエスト処理は、以下の流れで行われます。
@@ -126,27 +146,16 @@ ayutennフレームワークでのリクエスト処理は、以下の流れで�
 
 すべてのリクエストは`index.php`で受け取られます。
 
-**初期処理:**
+**index.phpが担う処理:**
 - 設定ファイル(`config.json`, `app.json`)の読み込み
+- ayutenn-coreのパス設定
 - セッションの開始
 - CSRFトークンの検証(POSTリクエストの場合)
 - Routerの初期化とディスパッチ
 
-```php
-// index.phpの主要部分
-Config::reset(__DIR__ . '/../../config');
-session_start();
-
-$path_root = Config::get('PATH_ROOT');
-$route_dir = $_SERVER['DOCUMENT_ROOT'] . Config::get('ROUTE_DIR');
-$router = new Router($route_dir, $path_root);
-
-$router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
-```
-
 ### 2. ルーティング (`Router`)
 
-Routerは`/app/routes`内のすべてのルート定義を読み込み、リクエストURLとマッチするルートを探します。
+Routerは`/app/routes`直下のすべての`.php`ファイルをルート定義として読み込み、リクエストURLとマッチするルートを探します。
 
 **ルートの種類:**
 - **Controller**: フォーム処理を行い、リダイレクトする
@@ -178,12 +187,18 @@ return [
 #### パターンA: Controller
 
 1. Controllerクラスのインスタンス化
-2. `run()`メソッドが自動呼び出される
+2. `run()`メソッドが呼び出される
 3. リクエストパラメータのバリデーション
 4. バリデーション成功時: `main()`メソッドを実行
 5. バリデーション失敗時: エラーメッセージをセッションに保存し、`$redirectUrlWhenError`にリダイレクト
 6. `main()`内でデータベース処理などを実行
 7. 最終的に`redirect()`で別ページにリダイレクト
+
+原則、全てのコントローラーでPRGパターンを採用します。
+コントローラーはGETリクエストを受け取るべきではありませんし、
+コントローラー内でrequireなどでビューを表示すべきではありません。
+
+検索処理を行うときなど、GETリクエストを受け取る場合は、すべてビューファイルとして実装します。
 
 ```php
 // Controllerの実行フロー
@@ -201,7 +216,7 @@ redirect('/register-complete')
 #### パターンB: API
 
 1. APIクラスのインスタンス化
-2. `run()`メソッドが自動呼び出される
+2. `run()`メソッドが呼び出される
 3. リクエストパラメータのバリデーション
 4. バリデーション成功時: `main()`メソッドを実行してJSON返却
 5. バリデーション失敗時: エラーのJSONレスポンスを返却
@@ -231,117 +246,6 @@ Router -> /views/profile.php
   ↓
 HTML出力
 ```
-
-## 主要コンポーネント
-
-### Model(バリデーション定義)
-
-JSONファイルでバリデーションルールを定義します。
-
-```json
-// /app/model/user_id.json
-{
-    "name": "ユーザーID",
-    "type": "int",
-    "min": 1
-}
-```
-
-**特徴:**
-- 型定義(`string`, `int`, `number`, `boolean`, `array`)
-- 範囲制限(`min`, `max`, `min_length`, `max_length`)
-- 形式制限(`email`, `url`, `alphanumeric`, `symbols`など)
-- 自動的な型変換とエラーメッセージ生成
-
-詳細: [model.md](model.md)
-
-### Controller
-
-フォーム処理を行い、リダイレクトします。
-
-```php
-class Login extends Controller
-{
-    protected array $RequestParameterFormat = [
-        'user-id' => ['name' => 'ユーザーID', 'format' => 'user_id'],
-        'password' => ['name' => 'パスワード', 'format' => 'password'],
-    ];
-
-    public function main(): void
-    {
-        $user_id = $this->parameter['user-id'];
-        $password = $this->parameter['password'];
-
-        // 処理...
-        $this->redirect('/top');
-    }
-}
-```
-
-**特徴:**
-- 自動バリデーション
-- Form Remain機能(入力値の一時保存)
-- リダイレクト処理の統一化
-
-詳細: [controller.md](controller.md)
-
-### API
-
-JSON形式のレスポンスを返します。
-
-```php
-class GetUserApi extends Api
-{
-    protected array $RequestParameterFormat = [
-        'user-id' => ['name' => 'ユーザーID', 'format' => 'user_id'],
-    ];
-
-    public function main(): array
-    {
-        $user_id = $this->parameter['user-id'];
-
-        // 処理...
-        return $this->createResponse(true, ['user' => $user_data]);
-    }
-}
-```
-
-**特徴:**
-- 自動バリデーション
-- 統一されたレスポンス形式
-- エラーハンドリング
-
-詳細: [api.md](api.md)
-
-### DataManager
-
-データベース操作を安全に行います。
-
-```php
-class UserManager extends DataManager
-{
-    public function getUser(string $user_id): QueryResult
-    {
-        $sql = "SELECT * FROM user WHERE user_id = :user_id";
-        $params = [':user_id' => [$user_id, PDO::PARAM_STR]];
-
-        $results = $this->executeAndFetchAll($sql, $params);
-
-        if (count($results) !== 0) {
-            return QueryResult::success(data: $results);
-        } else {
-            return QueryResult::alert('ユーザーが見つかりませんでした。');
-        }
-    }
-}
-```
-
-**特徴:**
-- プリペアドステートメントによるSQLインジェクション対策
-- QueryResultによる統一的な結果管理
-- `executeStatement()`と`executeAndFetchAll()`の2つの基本メソッド
-
-詳細: [database.md](database.md)
 
 ## 開発の流れ
 
@@ -422,61 +326,3 @@ return [
     new Route('POST', '/create-post', 'controller', 'CreatePost'),
 ];
 ```
-
-## セキュリティ機能
-
-### CSRFトークン
-
-全てのPOSTリクエストで自動的にCSRFトークンが検証されます。
-
-```php
-// ビューでCSRFトークンを出力
-use ayutenn\core\utils\CsrfTokenManager;
-$csrf_manager = new CsrfTokenManager();
-?>
-<form method="POST" action="/submit">
-    <input type="hidden" name="csrf_token" value="<?= $csrf_manager->getToken() ?>">
-    <!-- フォームの内容 -->
-</form>
-```
-
-### SQLインジェクション対策
-
-DataManagerのプリペアドステートメントにより、SQLインジェクションを防ぎます。
-
-```php
-// 安全なSQL実行
-$params = [':user_id' => [$user_id, PDO::PARAM_STR]];
-$results = $this->executeAndFetchAll($sql, $params);
-```
-
-### バリデーション
-
-モデルファイルによる自動バリデーションで、不正なデータの侵入を防ぎます。
-
-## ユーティリティ
-
-### セッション管理
-
-- **FlashMessage**: フラッシュメッセージ(成功・エラー通知)
-- **Form Remain**: バリデーションエラー時の入力値保存
-
-### その他のユーティリティ
-
-- **Logger**: ログ出力
-- **Redirect**: リダイレクト処理
-- **CsrfTokenManager**: CSRFトークン管理
-- **FileHandler**: ファイルアップロード処理
-- **Uuid**: UUID生成
-
-## 次のステップ
-
-より詳しい情報は、以下のドキュメントを参照してください:
-
-1. **[model.md](model.md)** - バリデーションルールの定義方法
-2. **[database.md](database.md)** - データベース操作の実装
-3. **[controller.md](controller.md)** - フォーム処理の実装
-4. **[api.md](api.md)** - API開発
-5. **[testing.md](testing.md)** - ユニットテストの実装
-
-各ドキュメントには、実践的なコード例とベストプラクティスが記載されています。

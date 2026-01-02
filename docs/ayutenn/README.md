@@ -1,28 +1,21 @@
 # ayutenn ドキュメント
 
 これは、ayutennについての実装ガイドとベストプラクティスが格納されています。
-ayutennを実際に使う際には、このディレクトリをgitignoreに追加すべきでしょう。
 
-## フレームワークリファレンス
+## ayutennとは？
 
-Ayutennフレームワークのコア機能については、以下のドキュメントを参照してください：
+ayutennは、PHPで作成するWebアプリケーションを構築するためのフレームワークです。
+以下の3つから構成されます。
 
-| ドキュメント | 説明 |
-|------------|------|
-| [routing.md](../../vendor/tyaunen/ayutenn-core/docs/routing.md) | Route, RouteGroup, MiddlewareクラスのAPIリファレンス |
-| [requests.md](../../vendor/tyaunen/ayutenn-core/docs/requests.md) | Controller, Api基底クラスのAPIリファレンス |
-| [database.md](../../vendor/tyaunen/ayutenn-core/docs/database.md) | DataManager, DbConnector, QueryResultのAPIリファレンス |
-| [validation.md](../../vendor/tyaunen/ayutenn-core/docs/validation.md) | バリデーションルールの仕様 |
-| [session.md](../../vendor/tyaunen/ayutenn-core/docs/session.md) | FlashMessageのAPIリファレンス |
-| [utils.md](../../vendor/tyaunen/ayutenn-core/docs/utils.md) | Logger, Redirect, CsrfTokenManager等のユーティリティ |
-| [config.md](../../vendor/tyaunen/ayutenn-core/docs/config.md) | 設定管理クラスのAPIリファレンス |
-| [migration.md](../../vendor/tyaunen/ayutenn-core/docs/migration.md) | マイグレーションツールの使用方法 |
+* **ayutenn-css** - CSS/JSライブラリです。簡素な装飾と、タブやモーダルなどの基本的なコンポーネントを提供します。
+* **ayutenn-core** - ayutennのコア機能を提供するライブラリです。ルーティング、データベース、バリデーション、セッション管理など、Webアプリケーションの基本機能を提供します。
+* **ayutenn-skeleton** - ayutennのプロジェクトテンプレートです。基本的なディレクトリ構造・ファイルを提供します。
 
----
+ayutenn-skeletonをgit cloneして、composer installを実行することで、使用可能な状態になります。
 
 ## プロジェクトガイド
 
-このプロジェクトでの実装方法・実践例については、以下のドキュメントを参照してください：
+このプロジェクトでの実装方法・実践例については、以下のドキュメントを参照してください。
 
 ### [intro.md](intro.md)
 ayutennフレームワークの概要、ディレクトリ構造、処理の流れについて説明しています。

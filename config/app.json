@@ -1,7 +1,4 @@
 {
-    "APP_NAME": "ayutenn_skeleton",
-    "APP_TITLE": "ayutenn_skeleton test",
-
     "APP_DIR": "/app",
     "ROUTE_DIR": "/app/routes",
     "CONTROLLER_DIR": "/app/controller",
@@ -12,5 +9,6 @@
     "LOG_DIR": "/storage/logs",
     "SESSION_DIR": "/storage/session",
 
-    "404_PAGE_FILE": "/system/404"
+    "404_PAGE_FILE": "/system/404",
+    "APP_TITLE": "ayutenn_skeleton test"
 }
