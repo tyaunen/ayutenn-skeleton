@@ -11,12 +11,11 @@ MigrationManagerクラスの詳細仕様：
 
 ## 概要
 
-ayutennはより柔軟に型やSQLを扱うために、ORMを採用していません。
-代わりに、バリデーションルールファイルとテーブル定義JSONをgit管理します。
+従来のマイグレーションツールは変更差分を順次記述するのに対し、このツールは**宣言的アプローチ**を採用しています。
 
-ayutennのマイグレーションツールは、これらの定義にRDBを"従わせる"ためのDDLを発行します。
-
-本番環境にデプロイするときは、gitでアプリの差分を反映してから、マイグレーションツールを起動して、得られたSQLを実行します。
+- テーブルの「あるべき姿」をJSONで定義
+- 現在のDBと比較して差分を自動検出
+- 差分を解消するSQLを自動生成
 
 ## クイックスタート
 
@@ -52,14 +51,12 @@ ayutennのマイグレーションツールは、これらの定義にRDBを"従
 
 #### CLI（推奨）
 
-このプロジェクトでは `vendor/bin/migrate.php` を使用します。
-
 ```bash
-# 設定ファイルを使用（基本はこの形）
-php vendor/bin/migrate.php --config=./config/config.json --tables=./tables --output=./migrations
+# 設定ファイルを使用
+php vendor/bin/migrate.php --config=./config/env.json --tables=./tables --output=./migrations
 
 # プレビュー（ファイル出力なし）
-php vendor/bin/migrate.php --config=./config/config.json --tables=./tables --output=./migrations --preview
+php vendor/bin/migrate.php --config=./config/env.json --tables=./tables --output=./migrations --preview
 
 # DSN直接指定
 php vendor/bin/migrate.php --dsn="mysql:host=localhost;dbname=mydb" --user=root --tables=./tables --output=./migrations
@@ -370,6 +367,20 @@ mysql -u user -p database < migrations/20241214_101154_migration.sql
 
 ---
 
+## クラス構成
+
+| クラス | 役割 |
+|---|---|
+| `Column` | カラム定義を表現 |
+| `TableDefinition` | テーブル全体の定義を保持 |
+| `TableDefinitionLoader` | JSONファイルからテーブル定義を読み込み |
+| `DatabaseInspector` | 実際のDB構造を取得 |
+| `SchemaDiffer` | 期待される定義と実際の構造の差分を検出 |
+| `DDLGenerator` | 差分からDDL文を生成 |
+| `MigrationManager` | 全体の処理フローを制御 |
+
+---
+
 ## CLI Reference
 
 コマンドラインからマイグレーションを実行できます。
@@ -377,7 +388,11 @@ mysql -u user -p database < migrations/20241214_101154_migration.sql
 ### 使用方法
 
 ```bash
+# Composerパッケージとして利用する場合
 php vendor/bin/migrate.php [options]
+
+# フレームワーク単体で利用する場合
+php bin/migrate.php [options]
 ```
 
 ### オプション
@@ -403,19 +418,19 @@ php vendor/bin/migrate.php [options]
 
 ```bash
 # 設定ファイルを使用（推奨）
-php vendor/bin/migrate.php --config=./config/config.json --tables=./tables --output=./migrations
+php vendor/bin/migrate.php --config=./config/env.json --tables=./tables --output=./migrations
 
 # ルールファイルを使用（formatキーを使う場合）
-php vendor/bin/migrate.php --config=./config/config.json --tables=./tables --output=./migrations --rules=./rules
+php vendor/bin/migrate.php --config=./config/env.json --tables=./tables --output=./migrations --rules=./rules
 
 # プレビューのみ
-php vendor/bin/migrate.php --config=./config/config.json --tables=./tables --output=./migrations --preview
+php vendor/bin/migrate.php --config=./config/env.json --tables=./tables --output=./migrations --preview
 
 # DSN直接指定
 php vendor/bin/migrate.php --dsn="mysql:host=localhost;dbname=mydb" --user=root --tables=./tables --output=./migrations
 
 # 定義にないテーブルを削除対象に含める
-php vendor/bin/migrate.php --config=./config/config.json --tables=./tables --output=./migrations --drop-unknown
+php vendor/bin/migrate.php --config=./config/env.json --tables=./tables --output=./migrations --drop-unknown
 ```
 
 ---
