@@ -8,6 +8,9 @@ use ayutenn\core\utils\CsrfTokenManager;
 use ayutenn\core\utils\Redirect;
 use ayutenn\core\FrameworkPaths;
 
+// 自作関数の追加
+require_once(__DIR__ . '/../helper/shorthands.php');
+
 /**
  * 【概要】
  * エントリーポイント

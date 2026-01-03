@@ -1,77 +1,31 @@
 <?php
 use ayutenn\core\config\Config;
-use ayutenn\core\session\FlashMessage;
-
-// フラッシュメッセージ取得
-$session_messages = FlashMessage::getMessages();
-$alert_messages = [];
-$info_messages = [];
-
-foreach ($session_messages as $msg) {
-    if ($msg['alert_type'] === FlashMessage::ALERT) {
-        $alert_messages[] = $msg['text'];
-    } elseif ($msg['alert_type'] === FlashMessage::INFO) {
-        $info_messages[] = $msg['text'];
-    }
-}
-
+use ayutenn\skeleton\app\views\components\FlashMessage;
 ?>
 
 <!DOCTYPE html>
 <html lang="ja" prefix="og: http://ogp.me/ns#">
 
 <head>
-    <title>ayutenn <?= Config::get('APP_TITLE') ?></title>
+    <title><?= Config::get('APP_TITLE') ?></title>
     <?php require(PROJECT_ROOT . '/app/views/components/flat/head.php'); ?>
-
 </head>
 
 <body data-page-name='top'>
-    <div class="wrapper">
-        <main class="main-content">
-            <div id="toast-container"></div>
-            <main-content>
-                <div class="content-block">
-                    <h1>ayutenn setup ok</h1>
-
-                    <div style="text-align: center; margin: 20px 0;">
-                        <img src="./assets/img/common/icon.png" alt="Ayutenn Icon" style="max-width: 200px; height: auto;">
-                    </div>
-
-                    <?php if (!empty($alert_messages)): ?>
-                        <?php foreach ($alert_messages as $message): ?>
-                            <div class="alert alert-danger">
-                                <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-
-                    <?php if (!empty($info_messages)): ?>
-                        <?php foreach ($info_messages as $message): ?>
-                            <div class="alert alert-info">
-                                <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+    <?php FlashMessage::render(); ?>
+    <main class="main-content">
+        <main-content>
+            <div class="hero">
+                <div class="hero-content">
+                    <h1><span class="text-accent">やった～</span></h1>
+                    <p>ayutennの準備が整いました！</p>
+                    <a href="https://github.com/tyaunen/ayutenn-skeleton" class="btn">GitHub</a>
                 </div>
-            </main-content>
-        </main>
-    </div>
-    <script>
-        function test() {
-            // axiosを使って、apiを叩くサンプル
-            axios.get(
-                './api/sample', {}
-            )
-            .then(response => {
-                console.log(response.data.payload);
-                alert('API Response: ' + JSON.stringify(response.data.payload));
-            })
-            .catch(function(error){
-                console.log(error)
-            });
-        }
-    </script>
+                <div class="hero-image">
+                    <img src="./assets/img/common/icon.png" alt="Ayutenn Logo">
+                </div>
+            </div>
+        </main-content>
+    </main>
 </body>
-
 </html>

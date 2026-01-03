@@ -1,0 +1,80 @@
+:root {
+    --primary: #818cf8;
+    --text: #f1f5f9;
+    --text-sub: #94a3b8;
+    --bg: #0f172a;
+    --surface: #1e293b;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.5;
+}
+
+/* Layout */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Content */
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+}
+
+.text-accent {
+    color: var(--primary);
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-sub);
+    margin: 0 0 2rem;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Image */
+.hero-image img {
+    max-width: 300px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}

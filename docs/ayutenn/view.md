@@ -58,7 +58,7 @@ use ayutenn\core\session\FlashMessage;
 ```
 
 ## パスの指定
-`/app/views/components/flat/head.php`を、必ずすべてのページでheadタグの内容としてrequireしてください。
+必ずすべてのページで、`/app/views/components/flat/head.php`を、headタグの内容としてrequireしてください。
 baseタグでリンクを制御しています。
 ```php
 // /app/public/index.php
@@ -115,62 +115,23 @@ $user = $result->getData();
 <!-- ここから通常のHTML -->
 ```
 
-## アラートメッセージの表示
+## アラート（フラッシュメッセージ）の表示
 
-コントローラーから渡されたアラートメッセージを表示する場合:
+コントローラーから渡されたフラッシュメッセージを表示する場合:
+/app/views/components/FlashMessage.phpが利用できます。
 
 ```php
 <?php
-use ayutenn\core\session\FlashMessage;
-
-// フラッシュメッセージ取得（取得後は自動的にセッションから削除される）
-$session_messages = FlashMessage::getMessages();
-$alert_messages = [];
-$info_messages = [];
-$error_messages = [];
-
-foreach ($session_messages as $msg) {
-    if ($msg['alert_type'] === FlashMessage::ALERT) {
-        $alert_messages[] = $msg['text'];
-    } elseif ($msg['alert_type'] === FlashMessage::INFO) {
-        $info_messages[] = $msg['text'];
-    } elseif ($msg['alert_type'] === FlashMessage::ERROR) {
-        $error_messages[] = $msg['text'];
-    }
-}
+use ayutenn\skeleton\app\views\components\FlashMessage;
 ?>
 
-<!-- HTML内で表示 -->
-<?php if (!empty($alert_messages)): ?>
-    <?php foreach ($alert_messages as $message): ?>
-        <div class="alert alert-warning">
-            <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
-
-<?php if (!empty($info_messages)): ?>
-    <?php foreach ($info_messages as $message): ?>
-        <div class="alert alert-info">
-            <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
-
-<?php if (!empty($error_messages)): ?>
-    <?php foreach ($error_messages as $message): ?>
-        <div class="alert alert-danger">
-            <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<body>
+    <?php FlashMessage::render(); ?>
+</body>
+</html>
 ```
-
-**メッセージタイプ:**
-- `FlashMessage::INFO` - 成功・情報メッセージ
-- `FlashMessage::ALERT` - 警告メッセージ
-- `FlashMessage::ERROR` - エラーメッセージ
-
 
 ## フォームの作成
 
@@ -187,7 +148,7 @@ $csrf_token = $csrf_manager->getToken();
 ?>
 
 <form method="POST" action="./login">
-    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
+    <input type="hidden" name="csrf_token" value="<?= h($csrf_token) ?>">
     <!-- フォーム項目 -->
 </form>
 ```
@@ -207,8 +168,8 @@ $user_name = $remain_params['user-name'] ?? '';
 ?>
 
 <form method="POST" action="./register">
-    <input type="text" name="user-id" value="<?= htmlspecialchars($user_id, ENT_QUOTES, 'UTF-8') ?>">
-    <input type="text" name="user-name" value="<?= htmlspecialchars($user_name, ENT_QUOTES, 'UTF-8') ?>">
+    <input type="text" name="user-id" value="<?= h($user_id) ?>">
+    <input type="text" name="user-name" value="<?= h($user_name) ?>">
 </form>
 ```
 
@@ -228,10 +189,31 @@ $user_name = $remain_params['user-name'] ?? '';
 
 ### XSS対策
 
-ユーザー入力や外部データを表示する際は必ず `htmlspecialchars()` を使用してください:
+ユーザー入力や外部データを表示する際は必ず `htmlspecialchars()` を使用してください。
+
+また、`/helper/shorthands.php`には定義されている`h()`、`hbr()`関数も利用可能です。
+これらはそれぞれ、`htmlspecialchars($str, ENT_QUOTES, 'UTF-8')`、`nl2br(htmlspecialchars($str, ENT_QUOTES, 'UTF-8'))`のエイリアスです。
+
+`/helper/shorthands.php`は`index.php`で読み込まれているため、どこでも使用できます。
 
 ```php
-<p><?= htmlspecialchars($user_input, ENT_QUOTES, 'UTF-8') ?></p>
+/**
+ * @param string $str
+ * @return string
+ */
+function h(string $str): string
+{
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * @param string $str
+ * @return string
+ */
+function hbr(string $str): string
+{
+    return nl2br(h($str));
+}
 ```
 
 ## ベストプラクティス
