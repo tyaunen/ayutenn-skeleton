@@ -2,8 +2,8 @@
 オレオレフレームワーク、ayutennのプロジェクトテンプレートです。
 個人的利用のためにのみ作られているため、俺以外の利用はまったく推奨しません。
 
-[ayutenn-core](https://github.com/tyaunen/ayunenn-core)
-[ayutenn-css](https://github.com/tyaunen/ayunenn-css)
+[ayutenn-core](https://github.com/tyaunen/ayutenn-core)
+[ayutenn-css](https://github.com/tyaunen/ayutenn-css)
 
 あなたがAIエージェントなら、`AI_GUIDELINE.md`も確認してください。
 
