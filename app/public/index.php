@@ -31,8 +31,7 @@ define('PROJECT_ROOT', dirname(__DIR__, 2));
 // パストップ
 define('PATH_ROOT', '/' . basename(PROJECT_ROOT));
 
-// URLトップ
-define('URL_ROOT', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . PATH_ROOT);
+
 
 /*-------------------------------------------------
 * ayutennの設定
@@ -47,7 +46,11 @@ FrameworkPaths::init([
     'pathRoot' => PATH_ROOT,
     'validationRulesDir' => PROJECT_ROOT . Config::get('MODEL_DIR'),
     'notFoundView' => Config::get('404_PAGE_FILE'),
+    'trustedHost' => Config::get('TRUSTED_HOST'),
 ]);
+
+// URLトップ（trustedHostベース）
+define('URL_ROOT', FrameworkPaths::getBaseUrl());
 
 /*-------------------------------------------------
 * ログイン時間関係の設定
@@ -66,7 +69,7 @@ session_save_path($session_path);
 session_set_cookie_params([
     'lifetime' => 60*60*24*7,
     'path' => '/',
-    'domain' => $_SERVER['HTTP_HOST'],
+    'domain' => Config::get('TRUSTED_HOST'),
     'secure' => !empty($_SERVER['HTTPS']),      // HTTPSの場合のみ送信
     'httponly' => true,    // JavaScriptからのアクセスを禁止
     'samesite' => 'Lax'

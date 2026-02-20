@@ -51,7 +51,7 @@ class SampleApi extends Api
         if ($result->isSucceed()) {
             // 成功時: ユーザー情報を返す
             // getUserの結果は配列の配列なので、最初の要素を取得
-            $userData = $result->data[0];
+            $userData = $result->getData()[0] ?? null;
             // ユーザー名のみを返す
             return $this->createResponse(true, ['user_name' => $userData['user_name']]);
         } else {

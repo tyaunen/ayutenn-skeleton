@@ -9,6 +9,6 @@
     "LOG_DIR": "/storage/logs",
     "SESSION_DIR": "/storage/session",
 
-    "404_PAGE_FILE": "/system/404",
+    "404_PAGE_FILE": "/system/404.php",
     "APP_TITLE": "ayutennテンプレート"
 }
