@@ -41,7 +41,7 @@ class FlashMessage
             $class = "alert {$type_class}";
 
             // XSS対策のためエスケープ
-            $escaped_text = h($text, ENT_QUOTES, 'UTF-8');
+            $escaped_text = h($text);
 
             echo "<div class=\"{$class}\">{$escaped_text}</div>";
         }
