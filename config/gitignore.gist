@@ -75,11 +75,7 @@ Desktop.ini
 # ========================================
 # ストレージ（セッションファイル等）
 # ========================================
-/storage/*
-!/storage/.gitkeep
-!/storage/session/
-/storage/session/*
-!/storage/session/.gitkeep
+/storage/
 
 # ========================================
 # CDNから自動ダウンロードされるファイル

@@ -5,14 +5,52 @@ AIエージェント向けの開発ガイドラインです。
 あなたは、以下のフローでタスクを実行すべきです。
 
 ### 1. ドキュメント確認
-あなたはタスクを遂行する前に、`/docs`のドキュメントと、プロジェクト全体の構造を確認してください。
 このプロジェクトで仕様されているのは独自フレームワーク(ayutenn)です。
 「既存のフレームワークであればこうするのがいいだろう」という推測は避け、わからないことがあれば必ず質問して確度が高い実装をしてください。
 
 ayutennの基本仕様については、.agent/skills/ 配下の各スキルを確認してください。
 （ayutenn-request, ayutenn-database, ayutenn-utility, ayutenn-css-layout, ayutenn-css-component）
 
+ディレクトリ構造と、より詳しい仕様ドキュメントのインデックスはこのAGENT.mdにも記載してありますから、それも参照してください。
+
 **特に新しいファイルを追加する際は、かならず根拠となるワークフローとドキュメントを確認してください。**
+
+### プロジェクト ディレクトリ構造
+```
+/skeleton
+├── /app
+│   ├── /api              - API処理(JSONレスポンス)
+│   ├── /controller       - コントローラー(POST→リダイレクト)
+│   ├── /database         - DataManager継承クラス
+│   ├── /helper           - 再利用可能なヘルパー
+│   ├── /model            - バリデーションルール定義(JSON)
+│   ├── /public           - エントリポイントとアセット
+│   ├── /routes           - ルート定義
+│   └── /views            - ビュー(HTML/PHP)
+├── /config               - config.json(環境設定), app.json(アプリ設定)
+├── /docs                 - ドキュメント
+├── /migrations           - テーブル定義(define/)とDDL(ddl/)
+├── /scripts              - ユーティリティスクリプト
+├── /storage              - セッション、ログ等(実行時生成)
+└── /vendor               - Composer依存
+```
+詳細: [docs/ayutenn/intro.md](docs/ayutenn/intro.md)
+
+### ドキュメント一覧 (`docs/ayutenn/`)
+タスクに関連するドキュメントのみ参照してください。
+
+| ファイル | 内容 |
+|---|---|
+| intro.md | プロジェクト構造、セットアップ、リクエスト処理の流れ |
+| routing.md | ルート定義の書き方、ミドルウェア |
+| controller.md | POST処理コントローラーの作成 |
+| api.md | JSONレスポンスAPIの作成 |
+| view.md | ビューファイルの作成、コンポーネント |
+| model.md | バリデーションルール定義(JSON) |
+| database.md | DataManager、SQL実行、トランザクション |
+| migration.md | テーブル定義JSONとマイグレーション |
+| testing.md | PHPUnitテストの書き方 |
+| best-practices.md | コーディング規約、設計方針 |
 
 ### 2. 不明点の確認
 ユーザーの依頼は不透明であったり、正確ではないことがあります。

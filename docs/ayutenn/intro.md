@@ -13,13 +13,11 @@
 
 ## セットアップ
 ```bash
-git clone https://github.com/tyaunen/ayutenn-skeleton.git MyProject
-cd MyProject
-composer install
+composer create-project tyaunen/ayutenn-skeleton MyProject --stability=dev --repository="{\"type\":\"vcs\",\"url\":\"https://github.com/tyaunen/ayutenn-skeleton.git\"}"
 ```
 
-環境設定ファイル、`config/config.json` が生成されます。
-環境に合わせて設定値を変更してください。
+`post-create-project-cmd`により、環境設定ファイル(`config/config.json`)や必要なディレクトリが自動生成されます。
+`config/config.json`を環境に合わせて設定値を変更してください。
 
 ```json
 {

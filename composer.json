@@ -38,6 +38,10 @@
         "post-create-project-cmd": [
             "@php -r \"copy('config/config.json.example', 'config/config.json');\"",
             "@php -r \"if (file_exists('config/gitignore.gist')) { copy('config/gitignore.gist', '.gitignore'); unlink('config/gitignore.gist'); }\"",
+            "@php -r \"if (!is_dir('app/api')) mkdir('app/api', 0755, true);\"",
+            "@php -r \"if (!is_dir('app/controller')) mkdir('app/controller', 0755, true);\"",
+            "@php -r \"if (!is_dir('app/database')) mkdir('app/database', 0755, true);\"",
+            "@php -r \"if (!is_dir('app/model')) mkdir('app/model', 0755, true);\"",
             "@php -r \"if (!is_dir('migrations')) mkdir('migrations', 0755, true);\"",
             "@php -r \"if (!is_dir('migrations/define')) mkdir('migrations/define', 0755, true);\"",
             "@php -r \"if (!is_dir('migrations/ddl')) mkdir('migrations/ddl', 0755, true);\"",
