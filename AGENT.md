@@ -9,8 +9,8 @@ AIエージェント向けの開発ガイドラインです。
 このプロジェクトで仕様されているのは独自フレームワーク(ayutenn)です。
 「既存のフレームワークであればこうするのがいいだろう」という推測は避け、わからないことがあれば必ず質問して確度が高い実装をしてください。
 
-ayutennの基本仕様については、.agent/workflows/core/を、
-ayutennのcss・jsコンポーネント仕様については、.agent/workflows/css/を確認してください。
+ayutennの基本仕様については、.agent/skills/ 配下の各スキルを確認してください。
+（ayutenn-request, ayutenn-database, ayutenn-utility, ayutenn-css-layout, ayutenn-css-component）
 
 **特に新しいファイルを追加する際は、かならず根拠となるワークフローとドキュメントを確認してください。**
 
