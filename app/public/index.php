@@ -31,8 +31,6 @@ define('PROJECT_ROOT', dirname(__DIR__, 2));
 // パストップ
 define('PATH_ROOT', '/' . basename(PROJECT_ROOT));
 
-
-
 /*-------------------------------------------------
 * ayutennの設定
 --------------------------------------------------*/
@@ -63,8 +61,8 @@ if (Config::get('DEBUG_MODE')) {
     error_reporting(E_ALL);
 } else {
     ini_set('display_errors', "Off");
-    error_reporting(0);
     ini_set('log_errors', "On");
+    error_reporting(0);
 }
 
 /*-------------------------------------------------
