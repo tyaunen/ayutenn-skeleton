@@ -15,9 +15,7 @@
 
 ## インストール
 ```bash
-git clone https://github.com/tyaunen/ayutenn-skeleton.git MyProject
-cd MyProject
-composer install
+composer create-project tyaunen/ayutenn-skeleton MyProject --stability=dev --repository='{"type":"vcs","url":"https://github.com/tyaunen/ayutenn-skeleton.git"}'
 ```
 
 ここから開発をどのように進めるかは、[/docs/ayutenn/intro.md](docs/ayutenn/intro.md)を参照してください。
