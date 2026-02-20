@@ -181,7 +181,7 @@ use ayutenn\core\routing\Route;
 
 return [
     // ビュー表示
-    new Route('GET', '/', 'view', '/views/top.php'),
+    new Route('GET', '/', 'view', '/guest/top'),
 
     // コントローラー
     new Route('POST', '/login', 'controller', 'Login'),
@@ -333,7 +333,7 @@ HTMLテンプレートを作成します。
 ```php
 // /app/routes/web.php
 return [
-    new Route('GET', '/post-form', 'view', '/views/post-form.php'),
+    new Route('GET', '/post-form', 'view', '/guest/post-form'),
     new Route('POST', '/create-post', 'controller', 'CreatePost'),
 ];
 ```

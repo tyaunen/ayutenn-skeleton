@@ -37,15 +37,15 @@
         "test": "phpunit",
         "post-create-project-cmd": [
             "@php -r \"copy('config/config.json.example', 'config/config.json');\"",
+            "@php -r \"if (file_exists('config/gitignore.gist')) { copy('config/gitignore.gist', '.gitignore'); unlink('config/gitignore.gist'); }\"",
             "@php -r \"if (!is_dir('migrations')) mkdir('migrations', 0755, true);\"",
-            "@php -r \"if (!is_dir('tables')) mkdir('tables', 0755, true);\"",
+            "@php -r \"if (!is_dir('migrations/define')) mkdir('migrations/define', 0755, true);\"",
+            "@php -r \"if (!is_dir('migrations/ddl')) mkdir('migrations/ddl', 0755, true);\"",
             "@php -r \"if (!is_dir('storage')) mkdir('storage', 0755, true);\"",
             "@php -r \"if (!is_dir('storage/session')) mkdir('storage/session', 0755, true);\"",
             "@php scripts/download_assets.php"
         ],
         "post-install-cmd": [
-            "@php -r \"if (file_exists('config/gitignore.gist')) { copy('config/gitignore.gist', '.gitignore'); unlink('config/gitignore.gist'); }\"",
-            "@php -r \"if (file_exists('config/config.json.example')) { rename('config/config.json.example', 'config/config.json'); }\"",
             "@php scripts/download_assets.php"
         ],
         "post-update-cmd": [

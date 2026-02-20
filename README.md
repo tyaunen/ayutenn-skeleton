@@ -5,7 +5,7 @@
 [ayutenn-core](https://github.com/tyaunen/ayutenn-core)
 [ayutenn-css](https://github.com/tyaunen/ayutenn-css)
 
-あなたがAIエージェントなら、`AI_GUIDELINE.md`も確認してください。
+あなたがAIエージェントなら、`AGENT.md`も確認してください。
 
 ## 必要要件
 

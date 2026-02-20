@@ -21,7 +21,7 @@ APIは、/app/apiに格納される単一のクラスファイルである必要
 APIは、ayutenn\core\requests\Apiを、必ず継承してください。
 
 ## ファイル末尾で、自身のインスタンスを返す
-ファイル末尾で、ファイル末尾で、自身のインスタンスを返してください。
+ファイル末尾で、自身のインスタンスを返してください。
 つまり、ファイル末尾で return new XXXX(); としてください。
 
 ## シンプルな例
@@ -88,16 +88,16 @@ class AddApi extends Api
         'number2' => ['name' => '数値2', 'format' => 'easy_calc_number'],
     ];
 
-    // $this->parameterに、バリデートされたリクエストパラメタが格納されています。
-    // リクエストパラメタがstringでない場合は、バリデートと一緒にキャストも済ませています。
-    // つまりこの場合num1、num2はそれぞれ0以上の数値であり、intです。
-    $num1 = $this->parameter['number1'];
-    $num2 = $this->parameter['number2'];
-
-    $result = $num1 + $num2;
-
     public function main(): array
     {
+        // $this->parameterに、バリデートされたリクエストパラメタが格納されています。
+        // リクエストパラメタがstringでない場合は、バリデートと一緒にキャストも済ませています。
+        // つまりこの場合num1、num2はそれぞれ0以上の数値であり、intです。
+        $num1 = $this->parameter['number1'];
+        $num2 = $this->parameter['number2'];
+
+        $result = $num1 + $num2;
+
         return $this->createResponse(
             true,
             [
@@ -107,7 +107,7 @@ class AddApi extends Api
     }
 }
 
-return new GetRandomNumberApi();
+return new AddApi();
 ```
 
 このAPIは、number1=3、number2=5だった場合以下のレスポンスを返します。
@@ -156,15 +156,15 @@ class AddApi extends Api
         'number3' => ['name' => '数値3', 'format' => 'easy_calc_number', 'require' => false], // この項目は任意
     ];
 
-    // 任意項目は、issetではなかった場合のみバリデートをスキップします。
-    $num1 = $this->parameter['number1'];
-    $num2 = $this->parameter['number2'];
-    $num3 = $this->parameter['number3'] ?? 0;
-
-    $result = $num1 + $num2 + $num3;
-
     public function main(): array
     {
+        // 任意項目は、issetではなかった場合のみバリデートをスキップします。
+        $num1 = $this->parameter['number1'];
+        $num2 = $this->parameter['number2'];
+        $num3 = $this->parameter['number3'] ?? 0;
+
+        $result = $num1 + $num2 + $num3;
+
         return $this->createResponse(
             true,
             [
@@ -174,5 +174,5 @@ class AddApi extends Api
     }
 }
 
-return new GetRandomNumberApi();
+return new AddApi();
 ```

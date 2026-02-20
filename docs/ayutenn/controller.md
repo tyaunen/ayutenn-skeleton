@@ -39,7 +39,7 @@ class Login extends Controller
 {
     protected string $redirectUrlWhenError = '/';
 
-    public function main(): void
+    protected function main(): void
     {
         // この時点でバリデーションは完了しているので、
         // $this->parameter から型変換済みのパラメータを取得できます
@@ -318,7 +318,7 @@ public function main(): void
 {
     // 処理...
     $this->redirect('/profile'); // ビューのURLにリダイレクト
-    exit;
+    return;
 }
 ```
 

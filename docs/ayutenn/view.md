@@ -189,12 +189,11 @@ $user_name = $remain_params['user-name'] ?? '';
 
 ### XSS対策
 
-ユーザー入力や外部データを表示する際は必ず `htmlspecialchars()` を使用してください。
+ユーザー入力や外部データを表示する際は必ず `h()` か `hbr()` を使用してください。
 
-また、`/helper/shorthands.php`には定義されている`h()`、`hbr()`関数も利用可能です。
-これらはそれぞれ、`htmlspecialchars($str, ENT_QUOTES, 'UTF-8')`、`nl2br(htmlspecialchars($str, ENT_QUOTES, 'UTF-8'))`のエイリアスです。
+これらはそれぞれ、`/app/helper/shorthands.php` に定義されている `htmlspecialchars($str, ENT_QUOTES, 'UTF-8')`、`nl2br(htmlspecialchars($str, ENT_QUOTES, 'UTF-8'))`のエイリアスです。
 
-`/helper/shorthands.php`は`index.php`で読み込まれているため、どこでも使用できます。
+`/app/helper/shorthands.php`は`index.php`で読み込まれているため、どこでも使用できます。
 
 ```php
 /**

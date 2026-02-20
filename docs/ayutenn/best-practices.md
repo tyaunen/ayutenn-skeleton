@@ -74,7 +74,7 @@ use ayutenn\skeleton\app\database\UserManager;
 $pdo = DbConnector::connectWithPdo();
 $user_manager = new UserManager($pdo);
 $result = $user_manager->getUser($user_id);
-$user = $result->data[0];
+$user = $result->getData()[0];
 ?>
 ```
 
@@ -251,11 +251,11 @@ if (Auth::isLogined()) {
 
 **対処法**: 名前空間をファイルの配置場所と完全に一致させる
 
-### エラー: "Call to undefined method getData()"
+### エラー: データが取得できない
 
-**原因**: `QueryResult` に `getData()` メソッドは存在しない
+**原因**: `getData()` の戻り値が `null`（クエリ結果にデータがない）
 
-**対処法**: `$result->data` で直接アクセス
+**対処法**: `isSucceed()` で成功を確認してから `getData()` を呼び出す
 
 ### エラー: セッションがHTTPで動作しない
 
@@ -267,6 +267,6 @@ if (Auth::isLogined()) {
 
 - コントローラーはインスタンスを返し、リダイレクトする
 - ビューはデータを取得し、HTMLを生成する
-- `QueryResult` の `data` プロパティに直接アクセス
+- `QueryResult` の `getData()` メソッドでデータを取得
 - リダイレクトは `Redirect` クラスを使用
 - セキュリティ対策を忘れずに

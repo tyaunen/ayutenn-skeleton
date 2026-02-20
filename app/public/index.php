@@ -58,8 +58,14 @@ define('URL_ROOT', FrameworkPaths::getBaseUrl());
 ini_set('session.gc_maxlifetime', 60*60*24*7);
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
-ini_set('display_errors', "On");
-ini_set('error_reporting', E_ALL);
+if (Config::get('DEBUG_MODE')) {
+    ini_set('display_errors', "On");
+    error_reporting(E_ALL);
+} else {
+    ini_set('display_errors', "Off");
+    error_reporting(0);
+    ini_set('log_errors', "On");
+}
 
 /*-------------------------------------------------
 * セッション開始

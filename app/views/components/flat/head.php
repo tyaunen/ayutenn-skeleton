@@ -18,11 +18,11 @@ foreach ($iterator as $file) {
         }
 
         if ($file->getExtension() === 'css') {
-            $css_file_path = substr($file->getPathname(), $path_head_length);
+            $css_file_path = str_replace('\\', '/', substr($file->getPathname(), $path_head_length));
             $css_link_tag .= "<link href='assets{$css_file_path}' rel='stylesheet'>\r\n";
         }
         if ($file->getExtension() === 'js') {
-            $js_file_path = substr($file->getPathname(), $path_head_length);
+            $js_file_path = str_replace('\\', '/', substr($file->getPathname(), $path_head_length));
             $js_script_tag .= "<script src='assets{$js_file_path}'></script>\r\n";
         }
     }
