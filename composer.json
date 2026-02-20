@@ -41,6 +41,7 @@
             "@php -r \"if (!is_dir('app/api')) mkdir('app/api', 0755, true);\"",
             "@php -r \"if (!is_dir('app/controller')) mkdir('app/controller', 0755, true);\"",
             "@php -r \"if (!is_dir('app/database')) mkdir('app/database', 0755, true);\"",
+            "@php -r \"if (!is_dir('app/routes/middleware')) mkdir('app/routes/middleware', 0755, true);\"",
             "@php -r \"if (!is_dir('app/model')) mkdir('app/model', 0755, true);\"",
             "@php -r \"if (!is_dir('migrations')) mkdir('migrations', 0755, true);\"",
             "@php -r \"if (!is_dir('migrations/define')) mkdir('migrations/define', 0755, true);\"",
