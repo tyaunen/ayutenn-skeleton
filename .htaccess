@@ -1,15 +1,18 @@
+Options -Indexes
 RewriteEngine On
-
 # ===============================================
-# セキュリティ強化版 .htaccess
+# .htaccess
 # ===============================================
 # 許可リスト方式：
 # - 静的ファイルは app/public/assets/ からのみ配信
 # - それ以外のリクエストはすべて index.php にルーティング
 # ===============================================
 
-# 1. assets/ へのリクエスト → app/public/assets/ へリライト（許可された拡張子のみ）
-RewriteRule ^assets/(.*\.(css|js|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|mp4|webm))$ app/public/assets/$1 [L,NC]
+# /assets/* は静的リソースのみ公開（許可リスト）
+RewriteRule ^assets/(.+\.(?:css|js|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|eot|mp4|webm|json))$ app/public/assets/$1 [QSA,END,NC]
 
-# 2. その他すべてのリクエスト → index.php に集約
-RewriteRule ^(?!app/public/assets/).*$ app/public/index.php [QSA,L]
+# /assets/* のうち許可外は拒否
+RewriteRule ^assets(?:/|$) - [F,L,NC]
+
+# それ以外はすべてフロントコントローラへ
+RewriteRule ^ app/public/index.php [QSA,END]
